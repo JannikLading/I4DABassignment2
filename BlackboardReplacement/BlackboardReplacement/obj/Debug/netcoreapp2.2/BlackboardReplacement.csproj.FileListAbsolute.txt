@@ -1,0 +1,8 @@
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.deps.json
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.runtimeconfig.json
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.runtimeconfig.dev.json
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.dll
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.csprojAssemblyReference.cache
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.csproj.CoreCompileInputs.cache
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.AssemblyInfoInputs.cache
+C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.AssemblyInfo.cs
