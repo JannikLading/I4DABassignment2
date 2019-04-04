@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
-using BlackboardReplacement.Model;
+using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlackboardReplacement.Data
@@ -33,5 +33,4 @@ namespace BlackboardReplacement.Data
 
         }
     }
-}
 }
