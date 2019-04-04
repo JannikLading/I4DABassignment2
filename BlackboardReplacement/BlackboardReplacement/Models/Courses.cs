@@ -6,5 +6,6 @@ namespace BlackboardReplacement.Models
 {
     public class Courses
     {
+
     }
 }

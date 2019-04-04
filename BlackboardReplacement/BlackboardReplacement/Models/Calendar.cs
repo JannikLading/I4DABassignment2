@@ -12,5 +12,7 @@ namespace BlackboardReplacement.Models
         public  string Lecture { get; set; }
         public DateTime Date { get; set; }
         public DateTime Deadline { get; set; }
+
+        public Courses Course { get; set; }
     }
 }
