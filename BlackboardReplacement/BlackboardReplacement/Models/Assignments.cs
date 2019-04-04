@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BlackboardReplacement.Models
 {
-    public class Courses
+    public class Assignments
     {
     }
 }
