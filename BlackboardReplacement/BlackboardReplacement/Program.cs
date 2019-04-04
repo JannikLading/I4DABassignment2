@@ -6,7 +6,47 @@ namespace BlackboardReplacement
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            do
+            {
+
+                Console.WriteLine("\n\nPress 1: show all courses on BlackBoard\n" +
+                                  "Press 2: show all students\n" +
+                                  "Press 3: show specific student\n" +
+                                  "Press 4: show teachers and students of a specific course\n" +
+                                  "Press 5: show course content of a specific course\n" +
+                                  "Press 6: show specific assignment\n" +
+                                  "Press 7: add a student\n" +
+                                  "Press 8: add a course\n" +
+                                  "Press 9: enroll student to course\n" +
+                                  "Press 10: add assignment\n" +
+                                  "Press 11: grade assignment"
+                                  );
+
+                string commandChoice = Console.ReadLine();
+
+                switch (commandChoice)
+                {
+                    case "1":
+                        Commands.ListAllCourses();
+                        break;
+                    case "2":
+                        Commands.ListAllStudents();
+                        break;
+                    case "3":
+                        Commands.ShowSpecificStudent();
+                        break;
+                    case "4":
+                        Commands.AddReview();
+                        break;
+                    case "5":
+                        Commands.AddBookAuthor();
+                        break;
+                    default:
+                        Console.WriteLine("Unknown input");
+                        break;
+                }
+            } while (true);
+
         }
     }
 }

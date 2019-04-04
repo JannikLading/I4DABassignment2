@@ -1,19 +1,67 @@
 ﻿using System;
 using BlackboardReplacement.Data;
+using BlackboardReplacement.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlackboardReplacement
 {
     public static class Commands
     {
 
-        public static async void ListAllBooks()
+        public static async void ListAllStudents()
         {
             using (var db = new AppDbContext())
             {
-                var books = await db.Books.ToListAsync();
-                foreach (var book in books)
+                var students = await db.Students.ToListAsync();
+                Console.WriteLine("\nList of all students\n");
+                foreach (var student in students)
                 {
-                    Console.WriteLine($"Book: {book.title} by {book.BookAuthors} with ISBN {book.ISBN}");
+                    Console.WriteLine($"Student: {student.Name} has au-id {student.AUID}");
+                }
+            }
+        }
+
+        public static async void ListAllCourses()
+        {
+            using (var db = new AppDbContext())
+            {
+                var courses = await db.Courses.ToListAsync();
+                Console.WriteLine("\nList of all courses\n");
+                foreach (var course in courses)
+                {
+                    Console.WriteLine($"Course: {course.Name} has course-id {course.id}\n");
+                }
+            }
+        }
+
+        public static async void ShowSpecificStudent()
+        {
+            Console.WriteLine("\nEnter au-id of student you want to see\n");
+            //string auidInput = Console.ReadLine();
+            int auidInput = int.Parse(Console.ReadLine());
+
+            using (var db = new AppDbContext())
+            {
+                var student = await db.Students.SingleAsync(s => s.auID.Equals(auidInput));
+
+                Console.WriteLine($"Student: {student.Name}\nAttending courses:");
+                foreach (var enrollment in student.Enrollments)
+                {
+                    Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.id}\n");
+                    if (enrollment.Status == true)
+                    {
+                        Console.WriteLine($"Status of students class: Passed\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Status of students class: Ongoing\n");
+                    }
+
+                    Console.WriteLine("Grades of student in class\n");
+                    foreach (var assignment in enrollment.Course.Assignments)
+                    {
+                        Console.WriteLine($"\t{assignment.Grade}");
+                    }
                 }
             }
         }
