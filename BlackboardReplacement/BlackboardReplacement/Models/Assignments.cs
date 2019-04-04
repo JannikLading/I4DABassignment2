@@ -4,8 +4,7 @@ using System.Text;
 
 namespace BlackboardReplacement.Models
 {
-    class Calendar
+    class Assignments
     {
-
     }
 }
