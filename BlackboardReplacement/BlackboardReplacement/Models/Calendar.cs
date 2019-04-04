@@ -8,7 +8,7 @@ namespace BlackboardReplacement.Models
     public class Calendar
     {
         [Key]
-        public string CalendarId { get; set; }
+        public int CalendarId { get; set; }
         public  string Lecture { get; set; }
         public DateTime Date { get; set; }
         public DateTime Deadline { get; set; }
