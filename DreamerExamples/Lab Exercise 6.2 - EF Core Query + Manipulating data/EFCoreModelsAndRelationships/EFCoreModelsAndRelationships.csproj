@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190326164217_AddBookMethod.cs" />
+    <Compile Remove="Migrations\20190327091504_AddBookMethod.cs" />
+    <Compile Remove="Migrations\20190327091842_AddBookMethod.cs" />
+    <Compile Remove="Migrations\20190327095754_AddBookMethod.cs" />
+    <Compile Remove="Migrations\20190327141216_IntitialCreateForReal.cs" />
+    <Compile Remove="Migrations\20190327141713_IntitialCreateForReal2.cs" />
+    <Compile Remove="Migrations\20190327141946_InitCreateForReal.cs" />
+    <Compile Remove="Migrations\20190327142533_InitCreateForReal.cs" />
+    <Compile Remove="Migrations\20190327144250_InitCreateForReal.cs" />
+    <Compile Remove="Migrations\20190327144614_InitCreateForReal.cs" />
+    <Compile Remove="Migrations\20190327150735_InitCreateForReal2.cs" />
+    <Compile Remove="Migrations\20190327151131_InitCreateForReal.cs" />
+    <Compile Remove="Migrations\20190328101306_IdentityInsert.cs" />
+    <Compile Remove="Migrations\20190328101531_IdentityInsert.cs" />
+    <Compile Remove="Migrations\20190328103452_FluenAPIKey.cs" />
+    <Compile Remove="Migrations\20190328144722_DatabaseGeneratedOptionNone.cs" />
+    <Compile Remove="Migrations\20190328145101_DatabaseGeneratedOptionNone.cs" />
+    <Compile Remove="Migrations\20190328165804_AllMethodsAddedExceptPriceOffer.cs" />
+    <Compile Remove="Migrations\20190328171938_AllMethodsAddedExceptPriceOffer.cs" />
+    <Compile Remove="Migrations\20190328172346_AllMethodsAddedExceptPriceOffer.cs" />
+    <Compile Remove="Migrations\20190328173414_AllMethodsAddedExceptPriceOffer.cs" />
+    <Compile Remove="Migrations\20190328174516_AllMethodsAddedExceptPriceOffer.cs" />
+    <Compile Remove="Migrations\20190329115117_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329115416_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329124445_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329125031_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329125423_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329131232_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329131521_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329132038_CommandsAdded.cs" />
+    <Compile Remove="Migrations\20190329132458_CommandsAdded.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

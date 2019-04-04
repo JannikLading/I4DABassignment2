@@ -1,0 +1,22 @@
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.deps.json
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.runtimeconfig.json
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.runtimeconfig.dev.json
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.dll
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.csprojAssemblyReference.cache
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.csproj.CoreCompileInputs.cache
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.AssemblyInfoInputs.cache
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.AssemblyInfo.cs
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.pdb
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.dll
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.1\EFCoreModelsAndRelationships\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.pdb
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.csprojAssemblyReference.cache
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.csproj.CoreCompileInputs.cache
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.AssemblyInfoInputs.cache
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.AssemblyInfo.cs
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.dll
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\obj\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.pdb
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.deps.json
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.runtimeconfig.json
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.runtimeconfig.dev.json
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.dll
+C:\ASE\Semester 4\DAB\Exercises\Lab Exercise 6.2 - EF Core Query + Manipulating data\EFCoreModelsAndRelationships\bin\Debug\netcoreapp2.2\EFCoreModelsAndRelationships.pdb
