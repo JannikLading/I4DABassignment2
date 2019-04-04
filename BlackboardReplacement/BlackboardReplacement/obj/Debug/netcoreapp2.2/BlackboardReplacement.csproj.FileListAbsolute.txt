@@ -6,3 +6,14 @@ C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debu
 C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.csproj.CoreCompileInputs.cache
 C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.AssemblyInfoInputs.cache
 C:\ASE\git\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.AssemblyInfo.cs
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.deps.json
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.runtimeconfig.json
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.runtimeconfig.dev.json
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.dll
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\bin\Debug\netcoreapp2.2\BlackboardReplacement.pdb
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.csprojAssemblyReference.cache
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.csproj.CoreCompileInputs.cache
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.AssemblyInfoInputs.cache
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.AssemblyInfo.cs
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.dll
+C:\Users\Tobias\Source\Repos\JannikLading\I4DABassignment2\BlackboardReplacement\BlackboardReplacement\obj\Debug\netcoreapp2.2\BlackboardReplacement.pdb
