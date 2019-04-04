@@ -14,5 +14,10 @@ namespace BlackboardReplacement.Models
         public Calendar Calendar { get; set; }
         public int CalenderId { get; set; }
         public CourseContent CourseContent { get; set; }
+        public List<Enrollments> Enrollments { get; set; }
+        public List<Assignments> Assignments{ get; set; }
+        //public List<Teachers> Teachers { get; set; }
+
+
     }
 }
