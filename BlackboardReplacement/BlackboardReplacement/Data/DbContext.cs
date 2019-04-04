@@ -24,12 +24,12 @@ namespace BlackboardReplacement.Data
         public DbSet<Student> Students  { get; set; }
         public DbSet<Teachers> Teachers  { get; set; }
         public DbSet<AUID> AUIDs { get; set; }
+        public DbSet<CoursesTeachers> CoursesTeachers { get; set; }
 
 
 
     //A DbSet<TEntity> can be used to query and save instances of TEntity.
     //LINQ queries against a DbSet<TEntity> will be translated into queries against the database.
-    // Suk, det er op af bakke det her
 
 
 
@@ -40,6 +40,8 @@ namespace BlackboardReplacement.Data
             // relationships
             //
 
+
+            modelBuilder.Entity<Teachers>().HasKey(a => new {a.AuId});
         }
     }
 }

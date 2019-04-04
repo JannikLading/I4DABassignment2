@@ -9,16 +9,14 @@ namespace BlackboardReplacement.Models
 {
     public class Teachers
     {
-        [Key]
-        public int auID { get; set; }
-
         [Required]
         public string name { get; set; }
 
         [Required]
         public DateTime Birthday { get; set; }
 
-        public AUID
+        public AUID AuId { get; set; }
+        public int auID { get; set; }
 
         public List<CoursesTeachers> CoursesTeacherses { get; set; }
     }
