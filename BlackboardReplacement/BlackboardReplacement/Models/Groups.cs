@@ -13,5 +13,7 @@ namespace BlackboardReplacement.Models
 
         public int maxSize { get; set; }
 
+        public Assignments assignment { get; set; }
+
     }
 }
