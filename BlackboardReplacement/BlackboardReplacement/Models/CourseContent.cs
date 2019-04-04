@@ -11,5 +11,6 @@ namespace BlackboardReplacement.Models
         public string TextBlock { get; set; }
         public string Folder { get; set; }
 
+        public List<Courses> Courses { get; set; }
     }
 }
