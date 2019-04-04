@@ -24,6 +24,9 @@ namespace BlackboardReplacement.Models
         [Required]
         public DateTime GraduationDate { get; set; }
 
+        public List<Enrollments> Enrollments { get; set; }
+            
+        public List<StudentGroups> StudentGroups { get; set; }
 
 
     }
