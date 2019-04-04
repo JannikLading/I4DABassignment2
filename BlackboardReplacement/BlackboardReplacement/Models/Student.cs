@@ -9,9 +9,6 @@ namespace BlackboardReplacement.Models
 {
     public class Student
     {
-        [Key]
-        public string AUID { get; set; }
-
         [Required]
         public string Name { get; set; }
 
@@ -28,6 +25,8 @@ namespace BlackboardReplacement.Models
             
         public List<StudentGroups> StudentGroups { get; set; }
 
+        public AUID AuId { get; set; }
+        public int auID { get; set; }
 
     }
 }

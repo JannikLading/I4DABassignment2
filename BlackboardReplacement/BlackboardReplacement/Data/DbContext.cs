@@ -42,6 +42,8 @@ namespace BlackboardReplacement.Data
 
 
             modelBuilder.Entity<Teachers>().HasKey(a => new {a.AuId});
+
+            modelBuilder.Entity<Student>().HasKey(a => new { a.AuId });
         }
     }
 }
