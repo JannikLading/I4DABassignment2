@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BlackboardReplacement.Models
 {
-    class Groups
+    public class Groups
     {
     }
 }

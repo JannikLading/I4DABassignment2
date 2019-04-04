@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BlackboardReplacement.Models
 {
-    class Calendar
+    public class Calendar
     {
         [Key]
         public string CalendarId { get; set; }

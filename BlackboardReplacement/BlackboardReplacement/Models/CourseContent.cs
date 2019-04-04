@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BlackboardReplacement.Models
 {
-    class CourseContent
+    public class CourseContent
     {
         public string Audio { get; set; }
         public string Video { get; set; }
