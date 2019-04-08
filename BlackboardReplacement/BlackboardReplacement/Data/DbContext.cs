@@ -75,15 +75,18 @@ namespace BlackboardReplacement.Data
                 {
                     id = 1,
                     Name = "Databaser",
-                    CalenderId = 1
+                    CalenderId = 1,
+                    CourseContentId = 1
+                    
                 });
 
             modelBuilder.Entity<Courses>()
                 .HasData(new Courses
                 {
                     id = 2,
-                    Name = "Lineær Algebra",
-                    CalenderId = 2
+                    Name = "Linear Algebra",
+                    CalenderId = 2,
+                    CourseContentId = 2
                 });
 
             modelBuilder.Entity<Enrollments>()
@@ -194,7 +197,27 @@ namespace BlackboardReplacement.Data
                 {
                     GroupId = 22,
                     maxSize = 4,
-                    AssignmentId = 1,
+                    AssignmentId = 1
+                });
+
+            modelBuilder.Entity<CourseContent>()
+                .HasData(new CourseContent
+                {
+                    CourseContentId = 1,
+                    Audio = "some audioclip",
+                    Video = "some videoclip",
+                    TextBlock = "Welcome to Dab",
+                    Folder = "Folder containing more Course Content"
+                });
+
+            modelBuilder.Entity<CourseContent>()
+                .HasData(new CourseContent
+                {
+                    CourseContentId = 2,
+                    Audio = "some audioclip",
+                    Video = "some videoclip",
+                    TextBlock = "Welcome to Linear Algebra",
+                    Folder = "Folder containing more Course Content"
                 });
         }
     }

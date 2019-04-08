@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using BlackboardReplacement.Data;
 using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
@@ -53,17 +52,18 @@ namespace BlackboardReplacement
                     if (enrollment.Status == true)
                     {
                         Console.WriteLine($"Status of students class: Passed\n");
+                        Console.WriteLine($"Grade: {enrollment.Grade}\n")
                     }
                     else
                     {
                         Console.WriteLine($"Status of students class: Ongoing\n");
                     }
-
+                    /*
                     Console.WriteLine("Grades of student in class\n");
                     foreach (var assignment in enrollment.Course.Assignments)
                     {
                         Console.WriteLine($"\t{assignment.Grade}");
-                    }
+                    }*/
                 }
             }
         }

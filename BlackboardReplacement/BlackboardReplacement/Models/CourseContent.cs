@@ -8,8 +8,7 @@ namespace BlackboardReplacement.Models
     public class CourseContent
     {
         [Key]
-        public int id { get; set; }
-
+        public int CourseContentId { get; set; }
         public string Audio { get; set; }
         public string Video { get; set; }
         public string TextBlock { get; set; }
