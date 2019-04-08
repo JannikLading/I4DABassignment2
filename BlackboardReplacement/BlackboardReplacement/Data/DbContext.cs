@@ -27,15 +27,16 @@ namespace BlackboardReplacement.Data
         public DbSet<Teachers> Teachers  { get; set; }
         public DbSet<AUID> AUIDs { get; set; }
         public DbSet<CoursesTeachers> CoursesTeachers { get; set; }
+        public DbSet<Assignments> Assigments { get; set; }
 
 
 
-    //A DbSet<TEntity> can be used to query and save instances of TEntity.
-    //LINQ queries against a DbSet<TEntity> will be translated into queries against the database.
+        //A DbSet<TEntity> can be used to query and save instances of TEntity.
+        //LINQ queries against a DbSet<TEntity> will be translated into queries against the database.
 
 
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //
             // fluent API to map some aspects of relationships entites, such as composite keys and many to many
@@ -74,6 +75,7 @@ namespace BlackboardReplacement.Data
                 {
                     id = 1,
                     Name = "Databaser",
+                    CalenderId = 1
                 });
 
             modelBuilder.Entity<Courses>()
@@ -81,8 +83,7 @@ namespace BlackboardReplacement.Data
                 {
                     id = 2,
                     Name = "Lineær Algebra",
-                    CalenderId = 1,
-
+                    CalenderId = 2
                 });
 
             modelBuilder.Entity<Enrollments>()
@@ -100,7 +101,8 @@ namespace BlackboardReplacement.Data
                     EnrollmentId = 2,
                     AUID = 1,
                     CourseId = 2,
-                    Status = true
+                    Status = false,
+                    Grade = 12
                 });
 
             modelBuilder.Entity<Enrollments>()
@@ -112,6 +114,75 @@ namespace BlackboardReplacement.Data
                     Status = true
                 });
 
+            modelBuilder.Entity<Teachers>()
+                .HasData(new Teachers
+                {
+                    name = "johnnyBoi",
+                    auID = 1,
+                    Birthday = new DateTime(1970,1,1),
+                });
+
+            modelBuilder.Entity<Teachers>()
+                .HasData(new Teachers
+                {
+                    name = "lil' jan-z",
+                    auID = 2,
+                    Birthday = new DateTime(1970, 1, 1),
+                });
+
+            modelBuilder.Entity<CoursesTeachers>()
+                .HasData(new CoursesTeachers
+                {
+                    AuId = 1,
+                    CourseId = 1
+                });
+
+            modelBuilder.Entity<CoursesTeachers>()
+                .HasData(new CoursesTeachers
+                {
+                    AuId = 1,
+                    CourseId = 2
+                });
+
+            modelBuilder.Entity<CoursesTeachers>()
+                .HasData(new CoursesTeachers
+                {
+                    AuId = 2,
+                    CourseId = 1
+                });
+
+            modelBuilder.Entity<Calendar>()
+                .HasData(new Calendar
+                {
+                    CalendarId = 1,
+                    CourseId = 1,
+                    Lecture = "EF Core FrameWork",
+                    Date = new DateTime(2019, 4,11),
+                });
+
+            modelBuilder.Entity<Calendar>()
+                .HasData(new Calendar
+                {
+                    CalendarId = 2,
+                    CourseId = 1,
+                    Lecture = "Database assignment 2",
+                    Deadline = new DateTime(2019, 4, 14),
+                });
+
+            modelBuilder.Entity<Calendar>()
+                .HasData(new Calendar
+                {
+                    CalendarId = 3,
+                    CourseId = 2,
+                    Lecture = "Linjer og planer",
+                    Date = new DateTime(1970, 1, 1),
+                });
+
+            modelBuilder.Entity<Assignments>()
+                .HasData(new Assignments
+                {
+
+                });
         }
     }
 }

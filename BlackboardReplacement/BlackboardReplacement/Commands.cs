@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BlackboardReplacement.Data;
 using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
@@ -128,9 +129,13 @@ namespace BlackboardReplacement
                     Birthday = bdayDateTime,
                     auID = auidInput,
                     EnrolledDate = enrollDateTime,
-
-
+                    GraduationDate = gradDateTime,
+                    Enrollments = new List<Enrollments>(),
+                    StudentGroups = new List<StudentGroups>()
                 };
+
+                db.Students.Add(student);
+                db.SaveChanges();
             }
         }
 
@@ -141,6 +146,50 @@ namespace BlackboardReplacement
                 Console.WriteLine("Please enter course name");
                 string courseName = Console.ReadLine();
 
+
+        }
+        public static void AddAssignment()
+        {
+            using (var db = new AppDbContext())
+            {
+                Console.WriteLine("Enter course ID for the assignment: \n");
+                string courseId = Console.ReadLine();
+
+                var assigment = new Assignments()
+                {
+                    CourseId   = int.Parse(courseId),
+                    Attempt = 0
+                };
+
+                assigment.Course = db.Courses.Single(c => c.id.Equals(assigment.CourseId));
+
+                db.Assigments.Add(assigment);
+                assigment.Course.Assignments.Add(assigment);
+            }
+        }
+
+        public static void GradeAssigment()
+        {
+            using (var db = new AppDbContext())
+            {
+                Console.WriteLine("Enter the assigment ID for the assigment your wish to grade:\n");
+                string assID = Console.ReadLine();
+
+                Console.WriteLine("Enter your teacher ID:\n");
+                string teacherId = Console.ReadLine();
+            
+                Console.WriteLine("Enter the grade:\n");
+                string grade = Console.ReadLine();
+
+                var assigment = db.Assigments.Single(a => a.AssignmentId.Equals(int.Parse(assID)));
+                assigment.TeacherId = int.Parse(teacherId);
+                assigment.Grade = int.Parse(grade);
+                assigment.Attempt += 1;
+
+                db.Assigments.Update(assigment);
+
+                db.SaveChanges();
+            }
                 Console.WriteLine("Please enter course id");
                 int courseId = int.Parse(Console.ReadLine());
 

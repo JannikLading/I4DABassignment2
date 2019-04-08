@@ -10,7 +10,7 @@ namespace BlackboardReplacement.Models
         [Key]
         public int EnrollmentId { get; set; }
         public bool Status { get; set; }
-
+        public int Grade { get; set; }
         public Courses Course { get; set; }
         public int CourseId { get; set; }
 
