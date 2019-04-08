@@ -65,6 +65,20 @@ namespace BlackboardReplacement
                 }
             }
         }
+        public static async void ShowCourseContent()
+        {
+            Console.WriteLine("\nEnter course ID of the course content you want to see\n");
+            int courseidInput = int.Parse(Console.ReadLine());
 
+            using (var db = new AppDbContext())
+            {
+                var course = await db.Courses.SingleAsync(c => c.id.Equals(courseidInput));
 
+                Console.WriteLine($"Course {courseidInput} has the following course content:");
+
+                Console.WriteLine($"Audio: {course.CourseContent.Audio} \t Video: {course.CourseContent.Video} \t Textblock: {course.CourseContent.TextBlock} \t Folder: {course.CourseContent.Folder}"); 
+            }
+        }
     }
+
+}
