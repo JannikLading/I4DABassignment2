@@ -66,5 +66,36 @@ namespace BlackboardReplacement
             }
         }
 
+        public static async void ShowSpecificCourse()
+        {
+            Console.WriteLine("\nEnter CourseId of course you want to see\n");
+            int courseidInput = int.Parse(Console.ReadLine());
+
+            using (var db = new AppDbContext())
+            {
+                var course = await db.Courses.SingleAsync(c => c.id.Equals(courseidInput));
+
+                Console.WriteLine($"Course: {course.Name}\nAttending course:");
+                foreach (var enrollment in student.Enrollments)
+                {
+                    Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.id}\n");
+                    if (enrollment.Status == true)
+                    {
+                        Console.WriteLine($"Status of students class: Passed\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Status of students class: Ongoing\n");
+                    }
+
+                    Console.WriteLine("Grades of student in class\n");
+                    foreach (var assignment in enrollment.Course.Assignments)
+                    {
+                        Console.WriteLine($"\t{assignment.Grade}");
+                    }
+                }
+            }
+        }
 
     }
+}
