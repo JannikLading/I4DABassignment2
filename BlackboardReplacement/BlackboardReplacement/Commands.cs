@@ -66,5 +66,39 @@ namespace BlackboardReplacement
             }
         }
 
+        public static void AddStudent()
+        {
+            using (var db = new AppDbContext())
+            {
+                Console.WriteLine("Enter student name:\n");
+                string nameInput = Console.ReadLine();
+
+                Console.WriteLine("Enter birthday in format 'Jan 1, 2009'\n");
+                string bdayInput = Console.ReadLine();
+                DateTime bdayDateTime = DateTime.Parse(bdayInput);
+
+                Console.WriteLine("Enter enrollment date in format 'Jan 1, 2009'\n");
+                string enrollInput = Console.ReadLine();
+                DateTime enrollDateTime = DateTime.Parse(enrollInput);
+
+                Console.WriteLine("Enter graduation date in format 'Jan 1, 2009'\n");
+                string gradInput = Console.ReadLine();
+                DateTime gradDateTime = DateTime.Parse(gradInput);
+
+                Console.WriteLine("Enter the students au-id\n");
+                int auidInput = int.Parse(Console.ReadLine());
+
+                var student = new Student()
+                {
+                    Name = nameInput,
+                    Birthday = bdayDateTime,
+                    auID = auidInput,
+                    EnrolledDate = enrollDateTime,
+
+
+                };
+            }
+        }
+
 
     }
