@@ -65,7 +65,20 @@ namespace BlackboardReplacement
                 }
             }
         }
+        public static async void ShowCourseContent()
+        {
+            Console.WriteLine("\nEnter course ID of the course content you want to see\n");
+            int courseidInput = int.Parse(Console.ReadLine());
 
+            using (var db = new AppDbContext())
+            {
+                var course = await db.Courses.SingleAsync(c => c.id.Equals(courseidInput));
+
+                Console.WriteLine($"Course {courseidInput} has the following course content:");
+
+                Console.WriteLine($"Audio: {course.CourseContent.Audio} \t Video: {course.CourseContent.Video} \t Textblock: {course.CourseContent.TextBlock} \t Folder: {course.CourseContent.Folder}");
+            }
+        }
         public static async void ShowSpecificCourse()
         {
             Console.WriteLine("\nEnter CourseId of course you want to see\n");
@@ -77,19 +90,43 @@ namespace BlackboardReplacement
 
                 Console.WriteLine($"Course: {course.Name}");
                 Console.WriteLine("List of student assigned:");
-               
+
                 foreach (var enrollment in course.Enrollments)
                 {
                     Console.WriteLine($"\t{enrollment.AUID} \t{enrollment.Student.Name}");
                 }
 
-                Console.WriteLine("List of teachers assigned:");
+        public static void AddStudent()
+        {
+            using (var db = new AppDbContext())
+            {
+                Console.WriteLine("Enter student name:\n");
+                string nameInput = Console.ReadLine();
 
-                foreach (var courseteacher in course.CoursesTeachers)
+                Console.WriteLine("Enter birthday in format 'Jan 1, 2009'\n");
+                string bdayInput = Console.ReadLine();
+                DateTime bdayDateTime = DateTime.Parse(bdayInput);
+
+                Console.WriteLine("Enter enrollment date in format 'Jan 1, 2009'\n");
+                string enrollInput = Console.ReadLine();
+                DateTime enrollDateTime = DateTime.Parse(enrollInput);
+
+                Console.WriteLine("Enter graduation date in format 'Jan 1, 2009'\n");
+                string gradInput = Console.ReadLine();
+                DateTime gradDateTime = DateTime.Parse(gradInput);
+
+                Console.WriteLine("Enter the students au-id\n");
+                int auidInput = int.Parse(Console.ReadLine());
+
+                var student = new Student()
                 {
-                    Console.WriteLine($"\t{courseteacher.AuId} \t{courseteacher.Teachers.name}");
+                    Name = nameInput,
+                    Birthday = bdayDateTime,
+                    auID = auidInput,
+                    EnrolledDate = enrollDateTime,
 
-                }
+
+                };
             }
         }
 
@@ -98,7 +135,7 @@ namespace BlackboardReplacement
             Console.WriteLine("Please enter Course name");
             string courseName = Console.ReadLine();
 
-            
+
         }
 
     }
