@@ -150,23 +150,43 @@ namespace BlackboardReplacement
         {
             using (var db = new AppDbContext())
             {
-                Console.WriteLine("Enter course ID: \n");
+                Console.WriteLine("Enter course ID for the assignment: \n");
                 string courseId = Console.ReadLine();
 
-                Console.WriteLine("Enter teacher ID:\n");
-                string teacherId = Console.ReadLine();
-                
                 var assigment = new Assignments()
                 {
                     CourseId   = int.Parse(courseId),
-                    TeacherId = int.Parse(teacherId)
+                    Attempt = 0
                 };
 
                 assigment.Course = db.Courses.Single(c => c.id.Equals(assigment.CourseId));
-                assigment.Teacher = db.Teachers.Single(t => t.AuId.Equals(assigment.TeacherId));
 
                 db.Assigments.Add(assigment);
                 assigment.Course.Assignments.Add(assigment);
+            }
+        }
+
+        public static void GradeAssigment()
+        {
+            using (var db = new AppDbContext())
+            {
+                Console.WriteLine("Enter the assigment ID for the assigment your wish to grade:\n");
+                string assID = Console.ReadLine();
+
+                Console.WriteLine("Enter your teacher ID:\n");
+                string teacherId = Console.ReadLine();
+            
+                Console.WriteLine("Enter the grade:\n");
+                string grade = Console.ReadLine();
+
+                var assigment = db.Assigments.Single(a => a.AssignmentId.Equals(int.Parse(assID)));
+                assigment.TeacherId = int.Parse(teacherId);
+                assigment.Grade = int.Parse(grade);
+                assigment.Attempt += 1;
+
+                db.Assigments.Update(assigment);
+
+                db.SaveChanges();
             }
         }
 
