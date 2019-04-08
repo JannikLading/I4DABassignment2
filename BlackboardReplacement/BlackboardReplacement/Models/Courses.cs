@@ -10,6 +10,7 @@ namespace BlackboardReplacement.Models
         [Key]
         public int id { get; set; } 
 
+        [Required]
         public string Name { get; set; }
 
         public Calendar Calendar { get; set; }
@@ -17,6 +18,8 @@ namespace BlackboardReplacement.Models
         public int CalenderId { get; set; }
 
         public CourseContent CourseContent { get; set; }
+
+        public int CourseContentId { get; set; }
 
         public List<Enrollments> Enrollments { get; set; }
 

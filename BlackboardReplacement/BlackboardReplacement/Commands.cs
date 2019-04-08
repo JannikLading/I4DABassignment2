@@ -93,5 +93,13 @@ namespace BlackboardReplacement
             }
         }
 
+        public static async void AddCourse()
+        {
+            Console.WriteLine("Please enter Course name");
+            string courseName = Console.ReadLine();
+
+            
+        }
+
     }
 }
