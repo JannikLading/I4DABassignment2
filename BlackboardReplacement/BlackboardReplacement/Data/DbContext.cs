@@ -116,7 +116,7 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Teachers>()
                 .HasData(new Teachers
                 {
-                    name = "johnnyBoi"
+                    name = "johnnyBoi",
                     auID = 1,
                     Birthday = new DateTime(1970,1,1),
                 });
@@ -124,9 +124,30 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Teachers>()
                 .HasData(new Teachers
                 {
-                    name = "lil' jan-z"
+                    name = "lil' jan-z",
                     auID = 2,
                     Birthday = new DateTime(1970, 1, 1),
+                });
+
+            modelBuilder.Entity<CoursesTeachers>()
+                .HasData(new CoursesTeachers
+                {
+                    AuId = 1,
+                    CourseId = 1
+                });
+
+            modelBuilder.Entity<CoursesTeachers>()
+                .HasData(new CoursesTeachers
+                {
+                    AuId = 1,
+                    CourseId = 2
+                });
+
+            modelBuilder.Entity<CoursesTeachers>()
+                .HasData(new CoursesTeachers
+                {
+                    AuId = 2,
+                    CourseId = 1
                 });
 
         }
