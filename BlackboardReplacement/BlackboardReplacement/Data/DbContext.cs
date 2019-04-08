@@ -150,6 +150,12 @@ namespace BlackboardReplacement.Data
                     CourseId = 1
                 });
 
+            modelBuilder.Entity<Calendar>()
+                .HasData(new Calendar
+                {
+                    CalendarId = 1,
+                    Lecture = ""
+                });
         }
     }
 }

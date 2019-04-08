@@ -14,5 +14,6 @@ namespace BlackboardReplacement.Models
         public DateTime Deadline { get; set; }
 
         public Courses Course { get; set; }
+        public int CourseId { get; set; }
     }
 }
