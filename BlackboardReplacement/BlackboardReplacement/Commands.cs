@@ -134,7 +134,8 @@ namespace BlackboardReplacement
                     StudentGroups = new List<StudentGroups>()
                 };
 
-
+                db.Students.Add(student);
+                db.SaveChanges();
             }
         }
 
