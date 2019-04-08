@@ -188,6 +188,12 @@ namespace BlackboardReplacement.Data
                     Attempt = 1,
                     groupId = 22,
                 });
+
+            modelBuilder.Entity<Groups>()
+                .HasData(new Groups
+                {
+
+                });
         }
     }
 }
