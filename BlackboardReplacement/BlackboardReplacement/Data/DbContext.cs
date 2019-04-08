@@ -84,7 +84,7 @@ namespace BlackboardReplacement.Data
                 .HasData(new Courses
                 {
                     id = 2,
-                    Name = "Lineær Algebra",
+                    Name = "Linear Algebra",
                     CalenderId = 2,
                     CourseContentId = 2
                 });
@@ -203,7 +203,21 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<CourseContent>()
                 .HasData(new CourseContent
                 {
-                    
+                    CourseContentId = 1,
+                    Audio = "some audioclip",
+                    Video = "some videoclip",
+                    TextBlock = "Welcome to Dab",
+                    Folder = "Folder containing more Course Content"
+                });
+
+            modelBuilder.Entity<CourseContent>()
+                .HasData(new CourseContent
+                {
+                    CourseContentId = 2,
+                    Audio = "some audioclip",
+                    Video = "some videoclip",
+                    TextBlock = "Welcome to Linear Algebra",
+                    Folder = "Folder containing more Course Content"
                 });
         }
     }
