@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BlackboardReplacement.Data;
 using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
@@ -127,12 +128,22 @@ namespace BlackboardReplacement
                     Birthday = bdayDateTime,
                     auID = auidInput,
                     EnrolledDate = enrollDateTime,
-
-
+                    GraduationDate = gradDateTime,
+                    Enrollments = new List<Enrollments>(),
+                    StudentGroups = new List<StudentGroups>()
                 };
+
+
             }
         }
 
+        public static async void AddCourse()
+        {
+            Console.WriteLine("Please enter Course name");
+            string courseName = Console.ReadLine();
+
+
+        }
         public static void AddAssignment()
         {
             using (var db = new AppDbContext())
