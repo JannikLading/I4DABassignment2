@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +46,72 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Teachers>().HasKey(a => new {a.AuId});
 
             modelBuilder.Entity<Student>().HasKey(a => new { a.AuId });
+
+
+            modelBuilder.Entity<Student>()
+                .HasData(new Student
+                {
+                    auID = 1,
+                    Name = "N008S14Y3R",
+                    EnrolledDate = new DateTime(2017, 1, 9),
+                    GraduationDate = new DateTime(2021, 1, 2),
+                    Birthday = new DateTime(1996, 11, 8),
+
+                });
+
+            modelBuilder.Entity<Student>()
+                .HasData(new Student
+                {
+                    auID = 2,
+                    Name = "xXAlekDreamer420Xx",
+                    EnrolledDate = new DateTime(2017, 1, 9),
+                    GraduationDate = new DateTime(2021, 1, 2),
+                    Birthday = new DateTime(1969, 11, 8),
+                });
+
+            modelBuilder.Entity<Courses>()
+                .HasData(new Courses
+                {
+                    id = 1,
+                    Name = "Databaser",
+                });
+
+            modelBuilder.Entity<Courses>()
+                .HasData(new Courses
+                {
+                    id = 2,
+                    Name = "Lineær Algebra",
+                    CalenderId = 1,
+
+                });
+
+            modelBuilder.Entity<Enrollments>()
+                .HasData(new Enrollments
+                {
+                    EnrollmentId = 1,
+                    AUID = 1,
+                    CourseId = 1,
+                    Status = true
+                });
+
+            modelBuilder.Entity<Enrollments>()
+                .HasData(new Enrollments
+                {
+                    EnrollmentId = 2,
+                    AUID = 1,
+                    CourseId = 2,
+                    Status = true
+                });
+
+            modelBuilder.Entity<Enrollments>()
+                .HasData(new Enrollments
+                {
+                    EnrollmentId = 3,
+                    AUID = 2,
+                    CourseId = 1,
+                    Status = true
+                });
+
         }
     }
 }
