@@ -154,8 +154,20 @@ namespace BlackboardReplacement.Data
                 .HasData(new Calendar
                 {
                     CalendarId = 1,
-                    Lecture = ""
+                    CourseId = 1,
+                    Lecture = "EF Core FrameWork",
+                    Date = new DateTime(2019, 4,11),
                 });
+
+            modelBuilder.Entity<Calendar>()
+                .HasData(new Calendar
+                {
+                    CalendarId = 2,
+                    CourseId = 1,
+                    Lecture = "Database assignment 2",
+                    Deadline = new DateTime(2019, 4, 14),
+                });
+
         }
     }
 }
