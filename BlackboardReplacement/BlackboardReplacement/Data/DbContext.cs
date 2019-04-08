@@ -67,7 +67,7 @@ namespace BlackboardReplacement.Data
                     Name = "xXAlekDreamer420Xx",
                     EnrolledDate = new DateTime(2017, 1, 9),
                     GraduationDate = new DateTime(2021, 1, 2),
-                    Birthday = new DateTime(1969, 11, 8),
+                    Birthday = new DateTime(1969, 9, 6),
                 });
 
             modelBuilder.Entity<Courses>()
@@ -218,6 +218,13 @@ namespace BlackboardReplacement.Data
                     Video = "some videoclip",
                     TextBlock = "Welcome to Linear Algebra",
                     Folder = "Folder containing more Course Content"
+                });
+
+            modelBuilder.Entity<StudentGroups>()
+                .HasData(new StudentGroups
+                {
+                    StudentGroupsId = 1,
+
                 });
         }
     }
