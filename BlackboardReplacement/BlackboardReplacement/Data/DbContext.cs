@@ -28,6 +28,8 @@ namespace BlackboardReplacement.Data
         public DbSet<AUID> AUIDs { get; set; }
         public DbSet<CoursesTeachers> CoursesTeachers { get; set; }
         public DbSet<Assignments> Assigments { get; set; }
+        public DbSet<Groups> Groups { get; set; }
+        public DbSet<StudentGroups> StudentGroups { get; set; }
 
 
 
@@ -43,6 +45,8 @@ namespace BlackboardReplacement.Data
             // relationships
             //
 
+
+            // Create many-to-many relations
 
             modelBuilder.Entity<Teachers>().HasKey(a => new {a.AuId});
 

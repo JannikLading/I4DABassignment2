@@ -53,18 +53,13 @@ namespace BlackboardReplacement
                     if (enrollment.Status == true)
                     {
                         Console.WriteLine($"Status of students class: Passed\n");
-                        Console.WriteLine($"Grade: {enrollment.Grade}\n")
+                        Console.WriteLine($"Grade: {enrollment.Grade}\n");
                     }
                     else
                     {
                         Console.WriteLine($"Status of students class: Ongoing\n");
                     }
-                    /*
-                    Console.WriteLine("Grades of student in class\n");
-                    foreach (var assignment in enrollment.Course.Assignments)
-                    {
-                        Console.WriteLine($"\t{assignment.Grade}");
-                    }*/
+
                 }
             }
         }
@@ -72,11 +67,9 @@ namespace BlackboardReplacement
         public static async void ShowGradesOfCourseOfStudent()
         {
             Console.WriteLine("\nEnter au-id of student you want to see\n");
-            //string auidInput = Console.ReadLine();
             int auidInput = int.Parse(Console.ReadLine());
 
             Console.WriteLine("\nEnter id of course, that you want to see grades of\n");
-            //string auidInput = Console.ReadLine();
             int courseIdInput = int.Parse(Console.ReadLine());
 
             using (var db = new AppDbContext())
@@ -84,28 +77,34 @@ namespace BlackboardReplacement
                 var student = await db.Students.SingleAsync(s => s.auID.Equals(auidInput));
                 var course = db.Courses.Single(c => c.id.Equals(courseIdInput));
 
-                Console.WriteLine($"Student: {student.Name}\nAttending course {course.Name}:");
+                Console.WriteLine($"Student: {student.Name}\nAttending course {course.Name}\n");
+                Console.WriteLine("Grades of students assignments in class\n");
 
-                foreach (var enrollment in student.Enrollments)
+
+               /* var goodAssignments = db.Assigments
+                    .Include(a => a.groups)
+                    .ThenInclude(g => g.StudentGroups)
+                    .Where(a => a.CourseId.Equals(courseIdInput));*/
+
+                var GoodStudentGroups = db.StudentGroups
+                    .Include(sg => sg.Group)
+                    .ThenInclude(g => g.Assignment)
+                    .Where(sg => sg.AUID.Equals(auidInput))
+                    .ToList();
+
+                //  var StudentGroups = db.StudentGroups.Where(sg => sg.AUID.Equals(auidInput));
+
+                Console.WriteLine($"Grades of students assignments in class {course.Name}:\n");
+                foreach (var studentGroup in GoodStudentGroups)
                 {
-                    /*
-                    Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.id}\n");
-                    if (enrollment.Status == true)
+                    if (studentGroup.Group.Assignment.CourseId == courseIdInput)
                     {
-                        Console.WriteLine($"Status of students class: Passed\n");
-                        Console.WriteLine($"Grade: {enrollment.Grade}\n")
+                        Console.WriteLine(
+                            $"Grade {studentGroup.Group.Assignment.Grade} for assignment-id {studentGroup.Group.Assignment.AssignmentId}\n");
                     }
-                    else
-                    {
-                        Console.WriteLine($"Status of students class: Ongoing\n");
-                    }*/
-                    
-                    Console.WriteLine("Grades of student in class\n");
-                    foreach (var assignment in enrollment.Course.Assignments)
-                    {
-                        Console.WriteLine($"\t{assignment.Grade}");
-                    }
+
                 }
+
             }
         }
 
@@ -189,13 +188,13 @@ namespace BlackboardReplacement
             }
         }
 
-        public static async void AddCourse()
+        public static void AddCourse()
         {
             using (var db = new AppDbContext())
             {
                 Console.WriteLine("Please enter course name");
                 string courseName = Console.ReadLine();
-            }
+            
 
                 Console.WriteLine("Please enter course id");
                 int courseId = int.Parse(Console.ReadLine());
@@ -272,7 +271,7 @@ namespace BlackboardReplacement
 
                 db.SaveChanges();
             }
-
+            /*
             Console.WriteLine("Please enter course id");
             int courseId = int.Parse(Console.ReadLine());
 
@@ -292,11 +291,12 @@ namespace BlackboardReplacement
                 Calendar = new Calendar(),
                 CourseContentId = courseContent.id,
                 CalendarId = Calendar.Calendar
-            };
+            };*/
         }
 
         public static void EnrollStudent()
         {
+
             Console.WriteLine("Enter au-id of student to be enrolled");
             int auidInput = int.Parse(Console.ReadLine());
 
@@ -311,9 +311,19 @@ namespace BlackboardReplacement
                     CourseId = courseIdInput,
                     AUID = auidInput
                 };
+
+                // Debug idea: If error, try adding navigational Course to equal a Course from db
+                db.Enrollments.Add(enrollment);
+
+                var student = db.Students.Single(s => s.AuId.Equals(auidInput));
+                var course = db.Courses.Single(c => c.id.Equals(courseIdInput));
+
+                student.Enrollments.Add(enrollment);
+                course.Enrollments.Add(enrollment);
+
+                db.SaveChanges();
             }
 
-            var student = 
         }
     }
 }

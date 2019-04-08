@@ -14,11 +14,10 @@ namespace BlackboardReplacement.Models
 
         public Teachers Teacher { get; set; }
         public int TeacherId { get; set; }
-        public Groups group { get; set; }
-        public int groupId { get; set; }
         public Courses Course { get; set; }
         public int CourseId { get; set; }
 
+        public List<Groups> groups { get; set; }
 
 
     }
