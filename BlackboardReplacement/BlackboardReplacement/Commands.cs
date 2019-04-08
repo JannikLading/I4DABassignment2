@@ -75,24 +75,20 @@ namespace BlackboardReplacement
             {
                 var course = await db.Courses.SingleAsync(c => c.id.Equals(courseidInput));
 
-                Console.WriteLine($"Course: {course.Name}\nAttending course:");
-                foreach (var enrollment in student.Enrollments)
+                Console.WriteLine($"Course: {course.Name}");
+                Console.WriteLine("List of student assigned:");
+               
+                foreach (var enrollment in course.Enrollments)
                 {
-                    Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.id}\n");
-                    if (enrollment.Status == true)
-                    {
-                        Console.WriteLine($"Status of students class: Passed\n");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Status of students class: Ongoing\n");
-                    }
+                    Console.WriteLine($"\t{enrollment.AUID} \t{enrollment.Student.Name}");
+                }
 
-                    Console.WriteLine("Grades of student in class\n");
-                    foreach (var assignment in enrollment.Course.Assignments)
-                    {
-                        Console.WriteLine($"\t{assignment.Grade}");
-                    }
+                Console.WriteLine("List of teachers assigned:");
+
+                foreach (var courseteacher in course.CoursesTeachers)
+                {
+                    Console.WriteLine($"\t{courseteacher.AuId} \t{courseteacher.Teachers.name}");
+
                 }
             }
         }
