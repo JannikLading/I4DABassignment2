@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using BlackboardReplacement.Data;
 using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
@@ -53,17 +52,18 @@ namespace BlackboardReplacement
                     if (enrollment.Status == true)
                     {
                         Console.WriteLine($"Status of students class: Passed\n");
+                        Console.WriteLine($"Grade: {enrollment.Grade}\n")
                     }
                     else
                     {
                         Console.WriteLine($"Status of students class: Ongoing\n");
                     }
-
+                    /*
                     Console.WriteLine("Grades of student in class\n");
                     foreach (var assignment in enrollment.Course.Assignments)
                     {
                         Console.WriteLine($"\t{assignment.Grade}");
-                    }
+                    }*/
                 }
             }
         }
@@ -141,8 +141,10 @@ namespace BlackboardReplacement
 
         public static async void AddCourse()
         {
-            Console.WriteLine("Please enter Course name");
-            string courseName = Console.ReadLine();
+            using (var db = new AppDbContext())
+            {
+                Console.WriteLine("Please enter course name");
+                string courseName = Console.ReadLine();
 
 
         }
@@ -187,6 +189,27 @@ namespace BlackboardReplacement
                 db.Assigments.Update(assigment);
 
                 db.SaveChanges();
+            }
+                Console.WriteLine("Please enter course id");
+                int courseId = int.Parse(Console.ReadLine());
+
+                var courseContent = new CourseContent()
+                {
+                    courseID = courseId
+                };
+
+                
+                var course = new Courses()
+                {
+                    id = courseId,
+                    Name = courseName,
+                    Enrollments = new List<Enrollments>(),
+                    Assignments = new List<Assignments>(),
+                    CoursesTeachers = new List<CoursesTeachers>(),
+                    Calendar = new Calendar(),
+                    CourseContentId = courseContent.id,
+                    CalendarId = Calendar.Calendar
+                };
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BlackboardReplacement.Models
@@ -12,6 +13,10 @@ namespace BlackboardReplacement.Models
         public string TextBlock { get; set; }
         public string Folder { get; set; }
 
-        public List<Courses> Courses { get; set; }
+        public Courses Course { get; set; }
+
+        [Required]
+        public int courseID { get; set; }
+        
     }
 }
