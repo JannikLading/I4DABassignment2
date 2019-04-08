@@ -76,10 +76,9 @@ namespace BlackboardReplacement
 
                 Console.WriteLine($"Course {courseidInput} has the following course content:");
 
-                Console.WriteLine($"Audio: {course.CourseContent.Audio} \t Video: {course.CourseContent.Video} \t Textblock: {course.CourseContent.TextBlock} \t Folder: {course.CourseContent.Folder}"); 
+                Console.WriteLine($"Audio: {course.CourseContent.Audio} \t Video: {course.CourseContent.Video} \t Textblock: {course.CourseContent.TextBlock} \t Folder: {course.CourseContent.Folder}");
             }
         }
-    }
         public static async void ShowSpecificCourse()
         {
             Console.WriteLine("\nEnter CourseId of course you want to see\n");
@@ -91,7 +90,7 @@ namespace BlackboardReplacement
 
                 Console.WriteLine($"Course: {course.Name}");
                 Console.WriteLine("List of student assigned:");
-               
+
                 foreach (var enrollment in course.Enrollments)
                 {
                     Console.WriteLine($"\t{enrollment.AUID} \t{enrollment.Student.Name}");
