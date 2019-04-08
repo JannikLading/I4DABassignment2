@@ -141,6 +141,13 @@ namespace BlackboardReplacement
                 {
                     Console.WriteLine($"\t{enrollment.AUID} \t{enrollment.Student.Name}");
                 }
+
+                Console.WriteLine("List of teachers assigned:");
+
+                foreach (var coursesTeacher in course.CoursesTeachers)
+                {
+                    Console.WriteLine($"\t{coursesTeacher.Teachers} \t{coursesTeacher.Teachers.AuId}");
+                }
             }
         }
 
@@ -190,8 +197,39 @@ namespace BlackboardReplacement
                 string courseName = Console.ReadLine();
             }
 
+                Console.WriteLine("Please enter course id");
+                int courseId = int.Parse(Console.ReadLine());
 
+                var courseContent = new CourseContent()
+                {
+                    courseID = courseId
+                };
+
+                var calendar = new Calendar()
+                {
+                    CourseId = courseId
+                };
+
+                db.CourseContents.Add(courseContent);
+                db.Calendars.Add(calendar);
+                db.SaveChanges(); 
+
+                var course = new Courses()
+                {
+                    id = courseId,
+                    Name = courseName,
+                    Enrollments = new List<Enrollments>(),
+                    Assignments = new List<Assignments>(),
+                    CoursesTeachers = new List<CoursesTeachers>(),
+                    CourseContentId = courseContent.CourseContentId,
+                    CalendarId = calendar.CalendarId
+                };
+
+                db.Courses.Add(course);
+                db.SaveChanges(); 
+            }
         }
+
         public static void AddAssignment()
         {
             using (var db = new AppDbContext())
