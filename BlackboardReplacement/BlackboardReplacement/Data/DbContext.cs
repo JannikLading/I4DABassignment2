@@ -27,15 +27,16 @@ namespace BlackboardReplacement.Data
         public DbSet<Teachers> Teachers  { get; set; }
         public DbSet<AUID> AUIDs { get; set; }
         public DbSet<CoursesTeachers> CoursesTeachers { get; set; }
+        public DbSet<Assignments> Assigments { get; set; }
 
 
 
-    //A DbSet<TEntity> can be used to query and save instances of TEntity.
-    //LINQ queries against a DbSet<TEntity> will be translated into queries against the database.
+        //A DbSet<TEntity> can be used to query and save instances of TEntity.
+        //LINQ queries against a DbSet<TEntity> will be translated into queries against the database.
 
 
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //
             // fluent API to map some aspects of relationships entites, such as composite keys and many to many

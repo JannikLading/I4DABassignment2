@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BlackboardReplacement.Data;
 using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
@@ -157,10 +158,15 @@ namespace BlackboardReplacement
                 
                 var assigment = new Assignments()
                 {
-                    CourseId   = courseId;
-                    Teacher
-
+                    CourseId   = int.Parse(courseId),
+                    TeacherId = int.Parse(teacherId)
                 };
+
+                assigment.Course = db.Courses.Single(c => c.id.Equals(assigment.CourseId));
+                assigment.Teacher = db.Teachers.Single(t => t.AuId.Equals(assigment.TeacherId));
+
+                db.Assigments.Add(assigment);
+                assigment.Course.Assignments.Add(assigment);
             }
         }
 
