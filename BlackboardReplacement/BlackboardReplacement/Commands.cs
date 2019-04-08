@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BlackboardReplacement.Data;
 using BlackboardReplacement.Models;
 using Microsoft.EntityFrameworkCore;
@@ -67,6 +68,48 @@ namespace BlackboardReplacement
                 }
             }
         }
+
+        public static async void ShowGradesOfCourseOfStudent()
+        {
+            Console.WriteLine("\nEnter au-id of student you want to see\n");
+            //string auidInput = Console.ReadLine();
+            int auidInput = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nEnter id of course, that you want to see grades of\n");
+            //string auidInput = Console.ReadLine();
+            int courseIdInput = int.Parse(Console.ReadLine());
+
+            using (var db = new AppDbContext())
+            {
+                var student = await db.Students.SingleAsync(s => s.auID.Equals(auidInput));
+                var course = db.Courses.Single(c => c.id.Equals(courseIdInput));
+
+                Console.WriteLine($"Student: {student.Name}\nAttending course {course.Name}:");
+
+                foreach (var enrollment in student.Enrollments)
+                {
+                    /*
+                    Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.id}\n");
+                    if (enrollment.Status == true)
+                    {
+                        Console.WriteLine($"Status of students class: Passed\n");
+                        Console.WriteLine($"Grade: {enrollment.Grade}\n")
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Status of students class: Ongoing\n");
+                    }*/
+                    
+                    Console.WriteLine("Grades of student in class\n");
+                    foreach (var assignment in enrollment.Course.Assignments)
+                    {
+                        Console.WriteLine($"\t{assignment.Grade}");
+                    }
+                }
+            }
+        }
+
+
         public static async void ShowCourseContent()
         {
             Console.WriteLine("\nEnter course ID of the course content you want to see\n");
@@ -145,6 +188,7 @@ namespace BlackboardReplacement
             {
                 Console.WriteLine("Please enter course name");
                 string courseName = Console.ReadLine();
+            }
 
 
         }
@@ -177,7 +221,7 @@ namespace BlackboardReplacement
 
                 Console.WriteLine("Enter your teacher ID:\n");
                 string teacherId = Console.ReadLine();
-            
+
                 Console.WriteLine("Enter the grade:\n");
                 string grade = Console.ReadLine();
 
@@ -190,28 +234,48 @@ namespace BlackboardReplacement
 
                 db.SaveChanges();
             }
-                Console.WriteLine("Please enter course id");
-                int courseId = int.Parse(Console.ReadLine());
 
-                var courseContent = new CourseContent()
-                {
-                    courseID = courseId
-                };
+            Console.WriteLine("Please enter course id");
+            int courseId = int.Parse(Console.ReadLine());
 
-                
-                var course = new Courses()
-                {
-                    id = courseId,
-                    Name = courseName,
-                    Enrollments = new List<Enrollments>(),
-                    Assignments = new List<Assignments>(),
-                    CoursesTeachers = new List<CoursesTeachers>(),
-                    Calendar = new Calendar(),
-                    CourseContentId = courseContent.id,
-                    CalendarId = Calendar.Calendar
-                };
-            }
+            var courseContent = new CourseContent()
+            {
+                courseID = courseId
+            };
+
+
+            var course = new Courses()
+            {
+                id = courseId,
+                Name = courseName,
+                Enrollments = new List<Enrollments>(),
+                Assignments = new List<Assignments>(),
+                CoursesTeachers = new List<CoursesTeachers>(),
+                Calendar = new Calendar(),
+                CourseContentId = courseContent.id,
+                CalendarId = Calendar.Calendar
+            };
         }
 
+        public static void EnrollStudent()
+        {
+            Console.WriteLine("Enter au-id of student to be enrolled");
+            int auidInput = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter id of course for student to be enrolled in");
+            int courseIdInput = int.Parse(Console.ReadLine());
+
+            using (var db = new AppDbContext())
+            {
+                var enrollment = new Enrollments()
+                {
+                    Status = false,
+                    CourseId = courseIdInput,
+                    AUID = auidInput
+                };
+            }
+
+            var student = 
+        }
     }
 }
