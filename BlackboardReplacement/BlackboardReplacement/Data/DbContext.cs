@@ -192,7 +192,9 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Groups>()
                 .HasData(new Groups
                 {
-
+                    GroupId = 22,
+                    maxSize = 4,
+                    AssignmentId = 1,
                 });
         }
     }
