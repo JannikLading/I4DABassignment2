@@ -36,10 +36,10 @@ namespace BlackboardReplacement
                         Commands.ShowSpecificStudent();
                         break;
                     case "4":
-                        Commands.AddReview();
+                        Commands.ShowCourseContent();
                         break;
                     case "5":
-                        Commands.AddBookAuthor();
+                    //    Commands.AddBookAuthor();
                         break;
                     default:
                         Console.WriteLine("Unknown input");

@@ -9,15 +9,20 @@ namespace BlackboardReplacement.Models
     {
         [Key]
         public int id { get; set; } 
+
         public string Name { get; set; }
 
         public Calendar Calendar { get; set; }
-        public int CalenderId { get; set; }
-        public CourseContent CourseContent { get; set; }
-        public List<Enrollments> Enrollments { get; set; }
-        public List<Assignments> Assignments{ get; set; }
-        //public List<Teachers> Teachers { get; set; }
 
+        public int CalenderId { get; set; }
+
+        public CourseContent CourseContent { get; set; }
+
+        public List<Enrollments> Enrollments { get; set; }
+
+        public List<Assignments> Assignments{ get; set; }
+
+        public List<CoursesTeachers> CoursesTeachers { get; set; }
 
     }
 }
