@@ -80,6 +80,7 @@ namespace BlackboardReplacement
                 Console.WriteLine($"Audio: {course.CourseContent.Audio} \t Video: {course.CourseContent.Video} \t Textblock: {course.CourseContent.TextBlock} \t Folder: {course.CourseContent.Folder}");
             }
         }
+
         public static async void ShowSpecificCourse()
         {
             Console.WriteLine("\nEnter CourseId of course you want to see\n");
@@ -96,6 +97,8 @@ namespace BlackboardReplacement
                 {
                     Console.WriteLine($"\t{enrollment.AUID} \t{enrollment.Student.Name}");
                 }
+            }
+        }
 
         public static void AddStudent()
         {
@@ -130,7 +133,8 @@ namespace BlackboardReplacement
                     StudentGroups = new List<StudentGroups>()
                 };
 
-
+                db.Students.Add(student);
+                db.SaveChanges();
             }
         }
 
