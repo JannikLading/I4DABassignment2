@@ -145,6 +145,24 @@ namespace BlackboardReplacement
 
 
         }
+        public static void AddAssignment()
+        {
+            using (var db = new AppDbContext())
+            {
+                Console.WriteLine("Enter course ID: \n");
+                string courseId = Console.ReadLine();
+
+                Console.WriteLine("Enter teacher ID:\n");
+                string teacherId = Console.ReadLine();
+                
+                var assigment = new Assignments()
+                {
+                    CourseId   = courseId;
+                    Teacher
+
+                };
+            }
+        }
 
     }
 }
