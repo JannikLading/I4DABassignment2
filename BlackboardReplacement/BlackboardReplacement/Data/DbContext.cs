@@ -169,6 +169,20 @@ namespace BlackboardReplacement.Data
                     Deadline = new DateTime(2019, 4, 14),
                 });
 
+            modelBuilder.Entity<Calendar>()
+                .HasData(new Calendar
+                {
+                    CalendarId = 3,
+                    CourseId = 2,
+                    Lecture = "Linjer og planer",
+                    Date = new DateTime(1970, 1, 1),
+                });
+
+            modelBuilder.Entity<Assignments>()
+                .HasData(new Assignments
+                {
+
+                });
         }
     }
 }
