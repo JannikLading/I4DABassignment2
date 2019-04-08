@@ -195,8 +195,7 @@ namespace BlackboardReplacement
             {
                 Console.WriteLine("Please enter course name");
                 string courseName = Console.ReadLine();
-            }
-
+            
                 Console.WriteLine("Please enter course id");
                 int courseId = int.Parse(Console.ReadLine());
 
