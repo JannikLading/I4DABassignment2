@@ -181,7 +181,12 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Assignments>()
                 .HasData(new Assignments
                 {
-
+                    AssignmentId = 1,
+                    CourseId = 1,
+                    TeacherId = 1,
+                    Grade = 12,
+                    Attempt = 1,
+                    groupId = 22,
                 });
         }
     }
