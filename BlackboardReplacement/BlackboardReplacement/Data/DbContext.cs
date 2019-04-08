@@ -75,7 +75,7 @@ namespace BlackboardReplacement.Data
                 {
                     id = 1,
                     Name = "Databaser",
-                    CalenderId = 1,
+                    CalendarId = 1,
                     CourseContentId = 1
                     
                 });
@@ -85,7 +85,7 @@ namespace BlackboardReplacement.Data
                 {
                     id = 2,
                     Name = "Linear Algebra",
-                    CalenderId = 2,
+                    CalendarId = 2,
                     CourseContentId = 2
                 });
 
