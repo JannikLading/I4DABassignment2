@@ -100,7 +100,7 @@ namespace BlackboardReplacement.Data
                     EnrollmentId = 2,
                     AUID = 1,
                     CourseId = 2,
-                    Status = true
+                    Status = false
                 });
 
             modelBuilder.Entity<Enrollments>()
