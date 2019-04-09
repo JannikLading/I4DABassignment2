@@ -256,6 +256,13 @@ namespace BlackboardReplacement.Data
                     AUId = 1
 
                 });
+
+            // Relational shit
+
+            modelBuilder.Entity<Enrollments>()
+                .HasOne(e => e.Student)
+                .WithMany(s => s.Enrollments)
+                .HasForeignKey(e => e.AUID);
         }
     }
 }

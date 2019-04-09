@@ -49,6 +49,7 @@ namespace BlackboardReplacement
                 Console.WriteLine($"Student: {student.Name}\nAttending courses:");
                 foreach (var enrollment in student.Enrollments)
                 {
+                    Console.WriteLine("Debug: Enters foreach");
                     Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.CoursesId}\n");
                     if (enrollment.Status == true)
                     {
