@@ -216,7 +216,7 @@ namespace BlackboardReplacement.Data
                     CourseId = 1,
                     TeacherId = 1,
                     Grade = 12,
-                    Attempt = 1
+                    Attempt = 1,
                 });
 
             modelBuilder.Entity<Groups>()
