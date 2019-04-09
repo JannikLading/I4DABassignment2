@@ -24,7 +24,7 @@ namespace BlackboardReplacement.Models
 
         [Key]
         public int AUId { get; set; }
-        public AU Au { get; set; }
+        public AU AU { get; set; }
 
         public List<Enrollments> Enrollments { get; set; }
         public List<StudentGroups> StudentGroups { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace BlackboardReplacement
 {
@@ -63,6 +64,7 @@ namespace BlackboardReplacement
                         Console.WriteLine("Unknown input");
                         break;
                 }
+                Thread.Sleep(500);
             } while (true);
 
         }

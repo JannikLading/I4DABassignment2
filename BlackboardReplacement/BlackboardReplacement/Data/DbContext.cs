@@ -76,6 +76,12 @@ namespace BlackboardReplacement.Data
                     AUId = 4
                 });
 
+            modelBuilder.Entity<AU>()
+                .HasData(new AU
+                {
+                    AUId = 5
+                });
+
             modelBuilder.Entity<Student>()
                 .HasData(new Student
                 {
