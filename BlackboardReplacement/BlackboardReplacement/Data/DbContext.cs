@@ -53,6 +53,30 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Student>().HasKey(a => new { a.AuId });
 
 
+            modelBuilder.Entity<AUID>()
+                .HasData(new AUID
+                {
+                    AuId = 1
+                });
+
+            modelBuilder.Entity<AUID>()
+                .HasData(new AUID
+                {
+                    AuId = 2
+                });
+
+            modelBuilder.Entity<AUID>()
+                .HasData(new AUID
+                {
+                    AuId = 3
+                });
+
+            modelBuilder.Entity<AUID>()
+                .HasData(new AUID
+                {
+                    AuId = 4
+                });
+
             modelBuilder.Entity<Student>()
                 .HasData(new Student
                 {
@@ -125,7 +149,7 @@ namespace BlackboardReplacement.Data
                 .HasData(new Teachers
                 {
                     name = "johnnyBoi",
-                    auID = 1,
+                    auID = 3,
                     Birthday = new DateTime(1970,1,1),
                 });
 
@@ -133,28 +157,28 @@ namespace BlackboardReplacement.Data
                 .HasData(new Teachers
                 {
                     name = "lil' jan-z",
-                    auID = 2,
+                    auID = 4,
                     Birthday = new DateTime(1970, 1, 1),
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
-                    AuId = 1,
+                    AuId = 3,
                     CourseId = 1
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
-                    AuId = 1,
+                    AuId = 4,
                     CourseId = 2
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
-                    AuId = 2,
+                    AuId = 4,
                     CourseId = 1
                 });
 

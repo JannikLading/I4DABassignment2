@@ -18,7 +18,7 @@ namespace BlackboardReplacement
                 Console.WriteLine("\nList of all students\n");
                 foreach (var student in students)
                 {
-                    Console.WriteLine($"Student: {student.Name} has au-id {student.AuId}");
+                    Console.WriteLine($"Student: {student.Name} has au-id {student.auID}");
                 }
             }
         }

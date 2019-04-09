@@ -15,8 +15,10 @@ namespace BlackboardReplacement.Models
         [Required]
         public DateTime Birthday { get; set; }
 
-        public AUID AuId { get; set; }
+        [Key]
         public int auID { get; set; }
+        public AUID AuId { get; set; }
+       
 
         public List<CoursesTeachers> CoursesTeacherses { get; set; }
     }
