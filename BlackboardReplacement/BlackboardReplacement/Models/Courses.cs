@@ -8,8 +8,8 @@ namespace BlackboardReplacement.Models
 {
     public class Courses
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; } 
+        [Key]//, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int CoursesId { get; set; } 
 
         [Required]
         public string Name { get; set; }

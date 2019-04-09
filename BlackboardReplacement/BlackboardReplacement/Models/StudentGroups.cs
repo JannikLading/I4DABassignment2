@@ -11,12 +11,11 @@ namespace BlackboardReplacement.Models
         public int StudentGroupsId { get; set; }
 
         public int AUId { get; set; }
-
         public Student Student { get; set; }
 
-        public int GroupId { get; set; }
+        public int GroupsId { get; set; }
 
-        public Groups Group { get; set; }
+        public Groups Groups { get; set; }
 
     }
 }

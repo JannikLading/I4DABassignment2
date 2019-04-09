@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlackboardReplacement.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class InitalCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,12 +24,13 @@ namespace BlackboardReplacement.Migrations
                 name: "Courses",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false),
+                    CoursesId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses", x => x.id);
+                    table.PrimaryKey("PK_Courses", x => x.CoursesId);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,7 +95,7 @@ namespace BlackboardReplacement.Migrations
                         name: "FK_Calendars_Courses_CoursesId",
                         column: x => x.CoursesId,
                         principalTable: "Courses",
-                        principalColumn: "id",
+                        principalColumn: "CoursesId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -108,16 +109,16 @@ namespace BlackboardReplacement.Migrations
                     Video = table.Column<string>(nullable: true),
                     TextBlock = table.Column<string>(nullable: true),
                     Folder = table.Column<string>(nullable: true),
-                    courseID = table.Column<int>(nullable: false)
+                    CoursesId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CourseContents", x => x.CourseContentId);
                     table.ForeignKey(
-                        name: "FK_CourseContents_Courses_courseID",
-                        column: x => x.courseID,
+                        name: "FK_CourseContents_Courses_CoursesId",
+                        column: x => x.CoursesId,
                         principalTable: "Courses",
-                        principalColumn: "id",
+                        principalColumn: "CoursesId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -145,7 +146,7 @@ namespace BlackboardReplacement.Migrations
                         name: "FK_Enrollments_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
-                        principalColumn: "id",
+                        principalColumn: "CoursesId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -157,21 +158,21 @@ namespace BlackboardReplacement.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Grade = table.Column<int>(nullable: false),
                     Attempt = table.Column<int>(nullable: false),
-                    TeacherId = table.Column<int>(nullable: false),
-                    CourseId = table.Column<int>(nullable: false)
+                    TeachersId = table.Column<int>(nullable: false),
+                    CoursesId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Assigments", x => x.AssignmentId);
                     table.ForeignKey(
-                        name: "FK_Assigments_Courses_CourseId",
-                        column: x => x.CourseId,
+                        name: "FK_Assigments_Courses_CoursesId",
+                        column: x => x.CoursesId,
                         principalTable: "Courses",
-                        principalColumn: "id",
+                        principalColumn: "CoursesId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Assigments_Teachers_TeacherId",
-                        column: x => x.TeacherId,
+                        name: "FK_Assigments_Teachers_TeachersId",
+                        column: x => x.TeachersId,
                         principalTable: "Teachers",
                         principalColumn: "AUId",
                         onDelete: ReferentialAction.Cascade);
@@ -183,23 +184,23 @@ namespace BlackboardReplacement.Migrations
                 {
                     CoursesTeachersId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AUId = table.Column<int>(nullable: false),
+                    TeachersId = table.Column<int>(nullable: false),
                     CoursesId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CoursesTeachers", x => x.CoursesTeachersId);
                     table.ForeignKey(
-                        name: "FK_CoursesTeachers_Teachers_AUId",
-                        column: x => x.AUId,
-                        principalTable: "Teachers",
-                        principalColumn: "AUId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_CoursesTeachers_Courses_CoursesId",
                         column: x => x.CoursesId,
                         principalTable: "Courses",
-                        principalColumn: "id",
+                        principalColumn: "CoursesId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CoursesTeachers_Teachers_TeachersId",
+                        column: x => x.TeachersId,
+                        principalTable: "Teachers",
+                        principalColumn: "AUId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -230,7 +231,7 @@ namespace BlackboardReplacement.Migrations
                     StudentGroupsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AUId = table.Column<int>(nullable: false),
-                    GroupId = table.Column<int>(nullable: false)
+                    GroupsId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -242,8 +243,8 @@ namespace BlackboardReplacement.Migrations
                         principalColumn: "AUId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentGroups_Groups_GroupId",
-                        column: x => x.GroupId,
+                        name: "FK_StudentGroups_Groups_GroupsId",
+                        column: x => x.GroupsId,
                         principalTable: "Groups",
                         principalColumn: "GroupId",
                         onDelete: ReferentialAction.Cascade);
@@ -261,27 +262,13 @@ namespace BlackboardReplacement.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "CourseContents",
-                columns: new[] { "CourseContentId", "Audio", "Folder", "TextBlock", "Video", "courseID" },
-                values: new object[,]
-                {
-                    { 1, "some audioclip", "Folder containing more Course Content", "Welcome to Dab", "some videoclip", 0 },
-                    { 2, "some audioclip", "Folder containing more Course Content", "Welcome to Linear Algebra", "some videoclip", 0 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Courses",
-                columns: new[] { "id", "Name" },
+                columns: new[] { "CoursesId", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Databaser" },
-                    { 2, "Linear Algebra" }
+                    { -1, "Databaser" },
+                    { -2, "Linear Algebra" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "StudentGroups",
-                columns: new[] { "StudentGroupsId", "AUId", "GroupId" },
-                values: new object[] { 1, 0, 0 });
 
             migrationBuilder.InsertData(
                 table: "Students",
@@ -303,27 +290,35 @@ namespace BlackboardReplacement.Migrations
 
             migrationBuilder.InsertData(
                 table: "Assigments",
-                columns: new[] { "AssignmentId", "Attempt", "CourseId", "Grade", "TeacherId" },
-                values: new object[] { 1, 1, 1, 12, 1 });
+                columns: new[] { "AssignmentId", "Attempt", "CoursesId", "Grade", "TeachersId" },
+                values: new object[] { 1, 1, -1, 12, 3 });
 
             migrationBuilder.InsertData(
                 table: "Calendars",
                 columns: new[] { "CalendarId", "CoursesId", "Date", "Deadline", "Lecture" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2019, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "EF Core FrameWork" },
-                    { 2, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Database assignment 2" },
-                    { 3, 2, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Linjer og planer" }
+                    { 1, -1, new DateTime(2019, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "EF Core FrameWork" },
+                    { 2, -2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Database assignment 2" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CourseContents",
+                columns: new[] { "CourseContentId", "Audio", "CoursesId", "Folder", "TextBlock", "Video" },
+                values: new object[,]
+                {
+                    { 1, "some audioclip", -1, "Folder containing more Course Content", "Welcome to Dab", "some videoclip" },
+                    { 2, "some audioclip", -2, "Folder containing more Course Content", "Welcome to Linear Algebra", "some videoclip" }
                 });
 
             migrationBuilder.InsertData(
                 table: "CoursesTeachers",
-                columns: new[] { "CoursesTeachersId", "AUId", "CoursesId" },
+                columns: new[] { "CoursesTeachersId", "CoursesId", "TeachersId" },
                 values: new object[,]
                 {
-                    { -3, 3, 1 },
-                    { -1, 4, 2 },
-                    { -2, 4, 1 }
+                    { -3, -1, 3 },
+                    { -1, -2, 4 },
+                    { -2, -1, 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -331,9 +326,9 @@ namespace BlackboardReplacement.Migrations
                 columns: new[] { "EnrollmentId", "AUID", "CourseId", "Grade", "Status" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 0, true },
-                    { 2, 1, 2, 12, false },
-                    { 3, 2, 1, 0, true }
+                    { 1, 1, -1, 0, true },
+                    { 2, 1, -2, 12, false },
+                    { 3, 2, -1, 0, true }
                 });
 
             migrationBuilder.InsertData(
@@ -341,15 +336,20 @@ namespace BlackboardReplacement.Migrations
                 columns: new[] { "GroupId", "AssignmentId", "maxSize" },
                 values: new object[] { 22, 1, 4 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Assigments_CourseId",
-                table: "Assigments",
-                column: "CourseId");
+            migrationBuilder.InsertData(
+                table: "StudentGroups",
+                columns: new[] { "StudentGroupsId", "AUId", "GroupsId" },
+                values: new object[] { 1, 1, 22 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Assigments_TeacherId",
+                name: "IX_Assigments_CoursesId",
                 table: "Assigments",
-                column: "TeacherId");
+                column: "CoursesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assigments_TeachersId",
+                table: "Assigments",
+                column: "TeachersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Calendars_CoursesId",
@@ -358,20 +358,20 @@ namespace BlackboardReplacement.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_CourseContents_courseID",
+                name: "IX_CourseContents_CoursesId",
                 table: "CourseContents",
-                column: "courseID",
+                column: "CoursesId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CoursesTeachers_AUId",
-                table: "CoursesTeachers",
-                column: "AUId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CoursesTeachers_CoursesId",
                 table: "CoursesTeachers",
                 column: "CoursesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CoursesTeachers_TeachersId",
+                table: "CoursesTeachers",
+                column: "TeachersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enrollments_AUID",
@@ -394,9 +394,9 @@ namespace BlackboardReplacement.Migrations
                 column: "AUId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentGroups_GroupId",
+                name: "IX_StudentGroups_GroupsId",
                 table: "StudentGroups",
-                column: "GroupId");
+                column: "GroupsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_AUId1",

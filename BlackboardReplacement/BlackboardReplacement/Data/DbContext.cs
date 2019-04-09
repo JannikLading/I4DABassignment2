@@ -100,7 +100,7 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Courses>()
                 .HasData(new Courses
                 {
-                    id = 1,
+                    CoursesId = -1,
                     Name = "Databaser",
                     //CalendarId = 1,
                     //CourseContentId = 1
@@ -110,7 +110,7 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Courses>()
                 .HasData(new Courses
                 {
-                    id = 2,
+                    CoursesId = -2,
                     Name = "Linear Algebra",
                     //CalendarId = 2,
                     //CourseContentId = 2
@@ -121,7 +121,7 @@ namespace BlackboardReplacement.Data
                 {
                     EnrollmentId = 1,
                     AUID = 1,
-                    CourseId = 1,
+                    CourseId = -1,
                     Status = true
                 });
 
@@ -130,7 +130,7 @@ namespace BlackboardReplacement.Data
                 {
                     EnrollmentId = 2,
                     AUID = 1,
-                    CourseId = 2,
+                    CourseId = -2,
                     Status = false,
                     Grade = 12
                 });
@@ -140,7 +140,7 @@ namespace BlackboardReplacement.Data
                 {
                     EnrollmentId = 3,
                     AUID = 2,
-                    CourseId = 1,
+                    CourseId = -1,
                     Status = true
                 });
 
@@ -164,31 +164,31 @@ namespace BlackboardReplacement.Data
                 .HasData(new CoursesTeachers
                 {
                     CoursesTeachersId = -3,
-                    AUId = 3,
-                    CoursesId = 1
+                    TeachersId = 3,
+                    CoursesId = -1
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
                     CoursesTeachersId = -1,
-                    AUId = 4,
-                    CoursesId = 2
+                    TeachersId = 4,
+                    CoursesId = -2
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
                     CoursesTeachersId = -2,
-                    AUId = 4,
-                    CoursesId = 1
+                   TeachersId = 4,
+                    CoursesId = -1
                 });
 
             modelBuilder.Entity<Calendar>()
                 .HasData(new Calendar
                 {
                     CalendarId = 1,
-                    CoursesId = 1,
+                    CoursesId = -1,
                     Lecture = "EF Core FrameWork",
                     Date = new DateTime(2019, 4,11),
                 });
@@ -197,26 +197,17 @@ namespace BlackboardReplacement.Data
                 .HasData(new Calendar
                 {
                     CalendarId = 2,
-                    CoursesId = 1,
+                    CoursesId = -2,
                     Lecture = "Database assignment 2",
                     Deadline = new DateTime(2019, 4, 14),
-                });
-
-            modelBuilder.Entity<Calendar>()
-                .HasData(new Calendar
-                {
-                    CalendarId = 3,
-                    CoursesId = 2,
-                    Lecture = "Linjer og planer",
-                    Date = new DateTime(1970, 1, 1),
                 });
 
             modelBuilder.Entity<Assignments>()
                 .HasData(new Assignments
                 {
                     AssignmentId = 1,
-                    CourseId = 1,
-                    TeacherId = 1,
+                    CoursesId = -1,
+                    TeachersId = 3,
                     Grade = 12,
                     Attempt = 1,
                 });
@@ -236,7 +227,8 @@ namespace BlackboardReplacement.Data
                     Audio = "some audioclip",
                     Video = "some videoclip",
                     TextBlock = "Welcome to Dab",
-                    Folder = "Folder containing more Course Content"
+                    Folder = "Folder containing more Course Content",
+                    CoursesId = -1
                 });
 
             modelBuilder.Entity<CourseContent>()
@@ -246,13 +238,16 @@ namespace BlackboardReplacement.Data
                     Audio = "some audioclip",
                     Video = "some videoclip",
                     TextBlock = "Welcome to Linear Algebra",
-                    Folder = "Folder containing more Course Content"
+                    Folder = "Folder containing more Course Content",
+                    CoursesId = -2
                 });
 
             modelBuilder.Entity<StudentGroups>()
                 .HasData(new StudentGroups
                 {
                     StudentGroupsId = 1,
+                    GroupsId = 22,
+                    AUId = 1
 
                 });
         }

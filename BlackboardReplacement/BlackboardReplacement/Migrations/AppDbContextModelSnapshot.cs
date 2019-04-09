@@ -56,17 +56,17 @@ namespace BlackboardReplacement.Migrations
 
                     b.Property<int>("Attempt");
 
-                    b.Property<int>("CourseId");
+                    b.Property<int>("CoursesId");
 
                     b.Property<int>("Grade");
 
-                    b.Property<int>("TeacherId");
+                    b.Property<int>("TeachersId");
 
                     b.HasKey("AssignmentId");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("CoursesId");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("TeachersId");
 
                     b.ToTable("Assigments");
 
@@ -75,9 +75,9 @@ namespace BlackboardReplacement.Migrations
                         {
                             AssignmentId = 1,
                             Attempt = 1,
-                            CourseId = 1,
+                            CoursesId = -1,
                             Grade = 12,
-                            TeacherId = 1
+                            TeachersId = 3
                         });
                 });
 
@@ -106,7 +106,7 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             CalendarId = 1,
-                            CoursesId = 1,
+                            CoursesId = -1,
                             Date = new DateTime(2019, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deadline = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Lecture = "EF Core FrameWork"
@@ -114,18 +114,10 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             CalendarId = 2,
-                            CoursesId = 1,
+                            CoursesId = -2,
                             Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deadline = new DateTime(2019, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Lecture = "Database assignment 2"
-                        },
-                        new
-                        {
-                            CalendarId = 3,
-                            CoursesId = 2,
-                            Date = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Deadline = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Lecture = "Linjer og planer"
                         });
                 });
 
@@ -137,17 +129,17 @@ namespace BlackboardReplacement.Migrations
 
                     b.Property<string>("Audio");
 
+                    b.Property<int>("CoursesId");
+
                     b.Property<string>("Folder");
 
                     b.Property<string>("TextBlock");
 
                     b.Property<string>("Video");
 
-                    b.Property<int>("courseID");
-
                     b.HasKey("CourseContentId");
 
-                    b.HasIndex("courseID")
+                    b.HasIndex("CoursesId")
                         .IsUnique();
 
                     b.ToTable("CourseContents");
@@ -157,42 +149,44 @@ namespace BlackboardReplacement.Migrations
                         {
                             CourseContentId = 1,
                             Audio = "some audioclip",
+                            CoursesId = -1,
                             Folder = "Folder containing more Course Content",
                             TextBlock = "Welcome to Dab",
-                            Video = "some videoclip",
-                            courseID = 0
+                            Video = "some videoclip"
                         },
                         new
                         {
                             CourseContentId = 2,
                             Audio = "some audioclip",
+                            CoursesId = -2,
                             Folder = "Folder containing more Course Content",
                             TextBlock = "Welcome to Linear Algebra",
-                            Video = "some videoclip",
-                            courseID = 0
+                            Video = "some videoclip"
                         });
                 });
 
             modelBuilder.Entity("BlackboardReplacement.Models.Courses", b =>
                 {
-                    b.Property<int>("id");
+                    b.Property<int>("CoursesId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("id");
+                    b.HasKey("CoursesId");
 
                     b.ToTable("Courses");
 
                     b.HasData(
                         new
                         {
-                            id = 1,
+                            CoursesId = -1,
                             Name = "Databaser"
                         },
                         new
                         {
-                            id = 2,
+                            CoursesId = -2,
                             Name = "Linear Algebra"
                         });
                 });
@@ -203,15 +197,15 @@ namespace BlackboardReplacement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AUId");
-
                     b.Property<int>("CoursesId");
+
+                    b.Property<int>("TeachersId");
 
                     b.HasKey("CoursesTeachersId");
 
-                    b.HasIndex("AUId");
-
                     b.HasIndex("CoursesId");
+
+                    b.HasIndex("TeachersId");
 
                     b.ToTable("CoursesTeachers");
 
@@ -219,20 +213,20 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             CoursesTeachersId = -3,
-                            AUId = 3,
-                            CoursesId = 1
+                            CoursesId = -1,
+                            TeachersId = 3
                         },
                         new
                         {
                             CoursesTeachersId = -1,
-                            AUId = 4,
-                            CoursesId = 2
+                            CoursesId = -2,
+                            TeachersId = 4
                         },
                         new
                         {
                             CoursesTeachersId = -2,
-                            AUId = 4,
-                            CoursesId = 1
+                            CoursesId = -1,
+                            TeachersId = 4
                         });
                 });
 
@@ -263,7 +257,7 @@ namespace BlackboardReplacement.Migrations
                         {
                             EnrollmentId = 1,
                             AUID = 1,
-                            CourseId = 1,
+                            CourseId = -1,
                             Grade = 0,
                             Status = true
                         },
@@ -271,7 +265,7 @@ namespace BlackboardReplacement.Migrations
                         {
                             EnrollmentId = 2,
                             AUID = 1,
-                            CourseId = 2,
+                            CourseId = -2,
                             Grade = 12,
                             Status = false
                         },
@@ -279,7 +273,7 @@ namespace BlackboardReplacement.Migrations
                         {
                             EnrollmentId = 3,
                             AUID = 2,
-                            CourseId = 1,
+                            CourseId = -1,
                             Grade = 0,
                             Status = true
                         });
@@ -360,13 +354,13 @@ namespace BlackboardReplacement.Migrations
 
                     b.Property<int>("AUId");
 
-                    b.Property<int>("GroupId");
+                    b.Property<int>("GroupsId");
 
                     b.HasKey("StudentGroupsId");
 
                     b.HasIndex("AUId");
 
-                    b.HasIndex("GroupId");
+                    b.HasIndex("GroupsId");
 
                     b.ToTable("StudentGroups");
 
@@ -374,8 +368,8 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             StudentGroupsId = 1,
-                            AUId = 0,
-                            GroupId = 0
+                            AUId = 1,
+                            GroupsId = 22
                         });
                 });
 
@@ -415,14 +409,14 @@ namespace BlackboardReplacement.Migrations
 
             modelBuilder.Entity("BlackboardReplacement.Models.Assignments", b =>
                 {
-                    b.HasOne("BlackboardReplacement.Models.Courses", "Course")
+                    b.HasOne("BlackboardReplacement.Models.Courses", "Courses")
                         .WithMany("Assignments")
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("CoursesId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BlackboardReplacement.Models.Teachers", "Teacher")
+                    b.HasOne("BlackboardReplacement.Models.Teachers", "Teachers")
                         .WithMany()
-                        .HasForeignKey("TeacherId")
+                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -436,22 +430,22 @@ namespace BlackboardReplacement.Migrations
 
             modelBuilder.Entity("BlackboardReplacement.Models.CourseContent", b =>
                 {
-                    b.HasOne("BlackboardReplacement.Models.Courses", "Course")
+                    b.HasOne("BlackboardReplacement.Models.Courses", "Courses")
                         .WithOne("CourseContent")
-                        .HasForeignKey("BlackboardReplacement.Models.CourseContent", "courseID")
+                        .HasForeignKey("BlackboardReplacement.Models.CourseContent", "CoursesId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BlackboardReplacement.Models.CoursesTeachers", b =>
                 {
-                    b.HasOne("BlackboardReplacement.Models.Teachers", "Teachers")
-                        .WithMany("CoursesTeacherses")
-                        .HasForeignKey("AUId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("BlackboardReplacement.Models.Courses", "Courses")
                         .WithMany("CoursesTeachers")
                         .HasForeignKey("CoursesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BlackboardReplacement.Models.Teachers", "Teachers")
+                        .WithMany("CoursesTeacherses")
+                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -490,15 +484,15 @@ namespace BlackboardReplacement.Migrations
                         .HasForeignKey("AUId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BlackboardReplacement.Models.Groups", "Group")
+                    b.HasOne("BlackboardReplacement.Models.Groups", "Groups")
                         .WithMany("StudentGroups")
-                        .HasForeignKey("GroupId")
+                        .HasForeignKey("GroupsId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BlackboardReplacement.Models.Teachers", b =>
                 {
-                    b.HasOne("BlackboardReplacement.Models.AU", "Au")
+                    b.HasOne("BlackboardReplacement.Models.AU", "AU")
                         .WithMany()
                         .HasForeignKey("AUId1");
                 });

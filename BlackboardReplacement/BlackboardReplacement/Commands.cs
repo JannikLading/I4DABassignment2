@@ -31,7 +31,7 @@ namespace BlackboardReplacement
                 Console.WriteLine("\nList of all courses\n");
                 foreach (var course in courses)
                 {
-                    Console.WriteLine($"Course: {course.Name} has course-id {course.id}\n");
+                    Console.WriteLine($"Course: {course.Name} has course-id {course.CoursesId}\n");
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace BlackboardReplacement
                 Console.WriteLine($"Student: {student.Name}\nAttending courses:");
                 foreach (var enrollment in student.Enrollments)
                 {
-                    Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.id}\n");
+                    Console.WriteLine($"\t{enrollment.Course.Name} with au-id {enrollment.Course.CoursesId}\n");
                     if (enrollment.Status == true)
                     {
                         Console.WriteLine($"Status of students class: Passed\n");
@@ -75,7 +75,7 @@ namespace BlackboardReplacement
             using (var db = new AppDbContext())
             {
                 var student = await db.Students.SingleAsync(s => s.AUId.Equals(auidInput));
-                var course = db.Courses.Single(c => c.id.Equals(courseIdInput));
+                var course = db.Courses.Single(c => c.CoursesId.Equals(courseIdInput));
 
                 Console.WriteLine($"Student: {student.Name}\nAttending course {course.Name}\n");
                 Console.WriteLine("Grades of students assignments in class\n");
@@ -87,7 +87,7 @@ namespace BlackboardReplacement
                     .Where(a => a.CourseId.Equals(courseIdInput));*/
 
                 var GoodStudentGroups = db.StudentGroups
-                    .Include(sg => sg.Group)
+                    .Include(sg => sg.Groups)
                     .ThenInclude(g => g.Assignment)
                     .Where(sg => sg.AUId.Equals(auidInput))
                     .ToList();
@@ -97,10 +97,10 @@ namespace BlackboardReplacement
                 Console.WriteLine($"Grades of students assignments in class {course.Name}:\n");
                 foreach (var studentGroup in GoodStudentGroups)
                 {
-                    if (studentGroup.Group.Assignment.CourseId == courseIdInput)
+                    if (studentGroup.Groups.Assignment.CoursesId == courseIdInput)
                     {
                         Console.WriteLine(
-                            $"Grade {studentGroup.Group.Assignment.Grade} for assignment-id {studentGroup.Group.Assignment.AssignmentId}\n");
+                            $"Grade {studentGroup.Groups.Assignment.Grade} for assignment-id {studentGroup.Groups.Assignment.AssignmentId}\n");
                     }
 
                 }
@@ -116,7 +116,7 @@ namespace BlackboardReplacement
 
             using (var db = new AppDbContext())
             {
-                var course = await db.Courses.SingleAsync(c => c.id.Equals(courseidInput));
+                var course = await db.Courses.SingleAsync(c => c.CoursesId.Equals(courseidInput));
 
                 Console.WriteLine($"Course {courseidInput} has the following course content:");
 
@@ -131,7 +131,7 @@ namespace BlackboardReplacement
 
             using (var db = new AppDbContext())
             {
-                var course = await db.Courses.SingleAsync(c => c.id.Equals(courseidInput));
+                var course = await db.Courses.SingleAsync(c => c.CoursesId.Equals(courseidInput));
 
                 Console.WriteLine($"Course: {course.Name}");
                 Console.WriteLine("List of student assigned:");
@@ -201,7 +201,7 @@ namespace BlackboardReplacement
 
                 var courseContent = new CourseContent()
                 {
-                    courseID = courseId
+                    CoursesId = courseId
                 };
 
                 var calendar = new Calendar()
@@ -215,7 +215,7 @@ namespace BlackboardReplacement
 
                 var course = new Courses()
                 {
-                    id = courseId,
+                    CoursesId = courseId,
                     Name = courseName,
                     Enrollments = new List<Enrollments>(),
                     Assignments = new List<Assignments>(),
@@ -238,14 +238,14 @@ namespace BlackboardReplacement
 
                 var assigment = new Assignments()
                 {
-                    CourseId   = int.Parse(courseId),
+                    CoursesId   = int.Parse(courseId),
                     Attempt = 0
                 };
 
-                assigment.Course = db.Courses.Single(c => c.id.Equals(assigment.CourseId));
+                assigment.Courses = db.Courses.Single(c => c.CoursesId.Equals(assigment.CoursesId));
 
                 db.Assigments.Add(assigment);
-                assigment.Course.Assignments.Add(assigment);
+                assigment.Courses.Assignments.Add(assigment);
             }
         }
 
@@ -263,7 +263,7 @@ namespace BlackboardReplacement
                 string grade = Console.ReadLine();
 
                 var assigment = db.Assigments.Single(a => a.AssignmentId.Equals(int.Parse(assID)));
-                assigment.TeacherId = int.Parse(teacherId);
+                assigment.TeachersId = int.Parse(teacherId);
                 assigment.Grade = int.Parse(grade);
                 assigment.Attempt += 1;
 
@@ -316,7 +316,7 @@ namespace BlackboardReplacement
                 db.Enrollments.Add(enrollment);
 
                 var student = db.Students.Single(s => s.AUId.Equals(auidInput));
-                var course = db.Courses.Single(c => c.id.Equals(courseIdInput));
+                var course = db.Courses.Single(c => c.CoursesId.Equals(courseIdInput));
 
                 student.Enrollments.Add(enrollment);
                 course.Enrollments.Add(enrollment);

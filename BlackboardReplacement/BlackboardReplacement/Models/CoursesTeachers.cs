@@ -11,7 +11,7 @@ namespace BlackboardReplacement.Models
        public int CoursesTeachersId { get; set; }
 
        public Teachers Teachers { get; set; }
-       public int AUId { get; set; }
+       public int TeachersId { get; set; }
 
        public Courses Courses{ get; set; }
        public int CoursesId { get; set; }

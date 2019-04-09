@@ -12,10 +12,10 @@ namespace BlackboardReplacement.Models
         public int Grade { get; set; }
         public int Attempt { get; set; }
 
-        public Teachers Teacher { get; set; }
-        public int TeacherId { get; set; }
-        public Courses Course { get; set; }
-        public int CourseId { get; set; }
+        public Teachers Teachers { get; set; }
+        public int TeachersId { get; set; }
+        public Courses Courses { get; set; }
+        public int CoursesId { get; set; }
 
         public List<Groups> groups { get; set; }
 
