@@ -18,7 +18,7 @@ namespace BlackboardReplacement
                 Console.WriteLine("\nList of all students\n");
                 foreach (var student in students)
                 {
-                    Console.WriteLine($"Student: {student.Name} has au-id {student.auID}");
+                    Console.WriteLine($"Student: {student.Name} has au-id {student.AUId}");
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace BlackboardReplacement
 
             using (var db = new AppDbContext())
             {
-                var student = await db.Students.SingleAsync(s => s.auID.Equals(auidInput));
+                var student = await db.Students.SingleAsync(s => s.AUId.Equals(auidInput));
 
                 Console.WriteLine($"Student: {student.Name}\nAttending courses:");
                 foreach (var enrollment in student.Enrollments)
@@ -74,7 +74,7 @@ namespace BlackboardReplacement
 
             using (var db = new AppDbContext())
             {
-                var student = await db.Students.SingleAsync(s => s.auID.Equals(auidInput));
+                var student = await db.Students.SingleAsync(s => s.AUId.Equals(auidInput));
                 var course = db.Courses.Single(c => c.id.Equals(courseIdInput));
 
                 Console.WriteLine($"Student: {student.Name}\nAttending course {course.Name}\n");
@@ -89,7 +89,7 @@ namespace BlackboardReplacement
                 var GoodStudentGroups = db.StudentGroups
                     .Include(sg => sg.Group)
                     .ThenInclude(g => g.Assignment)
-                    .Where(sg => sg.AUID.Equals(auidInput))
+                    .Where(sg => sg.AUId.Equals(auidInput))
                     .ToList();
 
                 //  var StudentGroups = db.StudentGroups.Where(sg => sg.AUID.Equals(auidInput));
@@ -145,7 +145,7 @@ namespace BlackboardReplacement
 
                 foreach (var coursesTeacher in course.CoursesTeachers)
                 {
-                    Console.WriteLine($"\t{coursesTeacher.Teachers} \t{coursesTeacher.Teachers.AuId}");
+                    Console.WriteLine($"\t{coursesTeacher.Teachers} \t{coursesTeacher.Teachers.AUId}");
                 }
             }
         }
@@ -176,7 +176,7 @@ namespace BlackboardReplacement
                 {
                     Name = nameInput,
                     Birthday = bdayDateTime,
-                    auID = auidInput,
+                    AUId = auidInput,
                     EnrolledDate = enrollDateTime,
                     GraduationDate = gradDateTime,
                     Enrollments = new List<Enrollments>(),
@@ -206,7 +206,7 @@ namespace BlackboardReplacement
 
                 var calendar = new Calendar()
                 {
-                    CourseId = courseId
+                    CoursesId = courseId
                 };
 
                 db.CourseContents.Add(courseContent);
@@ -220,8 +220,8 @@ namespace BlackboardReplacement
                     Enrollments = new List<Enrollments>(),
                     Assignments = new List<Assignments>(),
                     CoursesTeachers = new List<CoursesTeachers>(),
-                    CourseContentId = courseContent.CourseContentId,
-                    CalendarId = calendar.CalendarId
+                    //CourseContentId = courseContent.CourseContentId,
+                    //CalendarId = calendar.CalendarId
                 };
 
                 db.Courses.Add(course);
@@ -315,7 +315,7 @@ namespace BlackboardReplacement
                 // Debug idea: If error, try adding navigational Course to equal a Course from db
                 db.Enrollments.Add(enrollment);
 
-                var student = db.Students.Single(s => s.AuId.Equals(auidInput));
+                var student = db.Students.Single(s => s.AUId.Equals(auidInput));
                 var course = db.Courses.Single(c => c.id.Equals(courseIdInput));
 
                 student.Enrollments.Add(enrollment);

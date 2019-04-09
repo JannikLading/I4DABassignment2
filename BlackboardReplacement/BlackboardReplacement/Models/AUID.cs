@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlackboardReplacement.Models
 {
-    public class AUID
+    public class AU
     {
         [Key]
-        public int AuId { get; set; }
+        public int AUId { get; set; }
 
         private List<Teachers> Teachers { get; set; }
         private List<Student> Student { get; set; }

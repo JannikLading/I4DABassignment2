@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using BlackboardReplacement.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace BlackboardReplacement.Data
 {
@@ -25,7 +24,7 @@ namespace BlackboardReplacement.Data
         public DbSet<Enrollments> Enrollments  { get; set; }
         public DbSet<Student> Students  { get; set; }
         public DbSet<Teachers> Teachers  { get; set; }
-        public DbSet<AUID> AUIDs { get; set; }
+        public DbSet<AU> AUIDs { get; set; }
         public DbSet<CoursesTeachers> CoursesTeachers { get; set; }
         public DbSet<Assignments> Assigments { get; set; }
         public DbSet<Groups> Groups { get; set; }
@@ -48,39 +47,39 @@ namespace BlackboardReplacement.Data
 
             // Create many-to-many relations
 
-            modelBuilder.Entity<Teachers>().HasKey(a => new {a.AuId});
+            modelBuilder.Entity<Teachers>().HasKey(a => new {a.AUId});
 
-            modelBuilder.Entity<Student>().HasKey(a => new { a.AuId });
+            modelBuilder.Entity<Student>().HasKey(a => new { a.AUId });
 
 
-            modelBuilder.Entity<AUID>()
-                .HasData(new AUID
+            modelBuilder.Entity<AU>()
+                .HasData(new AU
                 {
-                    AuId = 1
+                    AUId = 1
                 });
 
-            modelBuilder.Entity<AUID>()
-                .HasData(new AUID
+            modelBuilder.Entity<AU>()
+                .HasData(new AU
                 {
-                    AuId = 2
+                    AUId = 2
                 });
 
-            modelBuilder.Entity<AUID>()
-                .HasData(new AUID
+            modelBuilder.Entity<AU>()
+                .HasData(new AU
                 {
-                    AuId = 3
+                    AUId = 3
                 });
 
-            modelBuilder.Entity<AUID>()
-                .HasData(new AUID
+            modelBuilder.Entity<AU>()
+                .HasData(new AU
                 {
-                    AuId = 4
+                    AUId = 4
                 });
 
             modelBuilder.Entity<Student>()
                 .HasData(new Student
                 {
-                    auID = 1,
+                    AUId = 1,
                     Name = "N008S14Y3R",
                     EnrolledDate = new DateTime(2017, 1, 9),
                     GraduationDate = new DateTime(2021, 1, 2),
@@ -91,7 +90,7 @@ namespace BlackboardReplacement.Data
             modelBuilder.Entity<Student>()
                 .HasData(new Student
                 {
-                    auID = 2,
+                    AUId = 2,
                     Name = "xXAlekDreamer420Xx",
                     EnrolledDate = new DateTime(2017, 1, 9),
                     GraduationDate = new DateTime(2021, 1, 2),
@@ -103,8 +102,8 @@ namespace BlackboardReplacement.Data
                 {
                     id = 1,
                     Name = "Databaser",
-                    CalendarId = 1,
-                    CourseContentId = 1
+                    //CalendarId = 1,
+                    //CourseContentId = 1
                     
                 });
 
@@ -113,8 +112,8 @@ namespace BlackboardReplacement.Data
                 {
                     id = 2,
                     Name = "Linear Algebra",
-                    CalendarId = 2,
-                    CourseContentId = 2
+                    //CalendarId = 2,
+                    //CourseContentId = 2
                 });
 
             modelBuilder.Entity<Enrollments>()
@@ -149,7 +148,7 @@ namespace BlackboardReplacement.Data
                 .HasData(new Teachers
                 {
                     name = "johnnyBoi",
-                    auID = 3,
+                    AUId = 3,
                     Birthday = new DateTime(1970,1,1),
                 });
 
@@ -157,36 +156,39 @@ namespace BlackboardReplacement.Data
                 .HasData(new Teachers
                 {
                     name = "lil' jan-z",
-                    auID = 4,
+                    AUId = 4,
                     Birthday = new DateTime(1970, 1, 1),
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
-                    AuId = 3,
-                    CourseId = 1
+                    CoursesTeachersId = -3,
+                    AUId = 3,
+                    CoursesId = 1
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
-                    AuId = 4,
-                    CourseId = 2
+                    CoursesTeachersId = -1,
+                    AUId = 4,
+                    CoursesId = 2
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
                 .HasData(new CoursesTeachers
                 {
-                    AuId = 4,
-                    CourseId = 1
+                    CoursesTeachersId = -2,
+                    AUId = 4,
+                    CoursesId = 1
                 });
 
             modelBuilder.Entity<Calendar>()
                 .HasData(new Calendar
                 {
                     CalendarId = 1,
-                    CourseId = 1,
+                    CoursesId = 1,
                     Lecture = "EF Core FrameWork",
                     Date = new DateTime(2019, 4,11),
                 });
@@ -195,7 +197,7 @@ namespace BlackboardReplacement.Data
                 .HasData(new Calendar
                 {
                     CalendarId = 2,
-                    CourseId = 1,
+                    CoursesId = 1,
                     Lecture = "Database assignment 2",
                     Deadline = new DateTime(2019, 4, 14),
                 });
@@ -204,7 +206,7 @@ namespace BlackboardReplacement.Data
                 .HasData(new Calendar
                 {
                     CalendarId = 3,
-                    CourseId = 2,
+                    CoursesId = 2,
                     Lecture = "Linjer og planer",
                     Date = new DateTime(1970, 1, 1),
                 });

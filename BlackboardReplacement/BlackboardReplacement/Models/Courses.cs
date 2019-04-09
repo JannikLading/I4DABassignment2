@@ -15,12 +15,12 @@ namespace BlackboardReplacement.Models
         public string Name { get; set; }
 
         public Calendar Calendar { get; set; }
-
-        public int CalendarId { get; set; }
+        // This can't be here, needed to tell calender is child of course
+        //public int CalendarId { get; set; }
 
         public CourseContent CourseContent { get; set; }
-
-        public int CourseContentId { get; set; }
+        // This can't be here, needed to tell CourseContent is child of course
+        //public int CourseContentId { get; set; }
 
         public List<Enrollments> Enrollments { get; set; }
 

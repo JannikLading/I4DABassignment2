@@ -9,6 +9,7 @@ namespace BlackboardReplacement.Models
 {
     public class Student
     {
+        //public int ÍD { get; set; }
         [Required]
         public string Name { get; set; }
 
@@ -21,14 +22,12 @@ namespace BlackboardReplacement.Models
         [Required]
         public DateTime GraduationDate { get; set; }
 
-        public List<Enrollments> Enrollments { get; set; }
-            
-        public List<StudentGroups> StudentGroups { get; set; }
-
         [Key]
-        public int auID { get; set; }
-        public AUID AuId { get; set; }
-       
+        public int AUId { get; set; }
+        public AU Au { get; set; }
+
+        public List<Enrollments> Enrollments { get; set; }
+        public List<StudentGroups> StudentGroups { get; set; }
 
     }
 }

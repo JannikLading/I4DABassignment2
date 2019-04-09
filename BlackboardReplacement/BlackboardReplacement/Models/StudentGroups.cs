@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +10,7 @@ namespace BlackboardReplacement.Models
         [Key]
         public int StudentGroupsId { get; set; }
 
-        public int AUID { get; set; }
+        public int AUId { get; set; }
 
         public Student Student { get; set; }
 
