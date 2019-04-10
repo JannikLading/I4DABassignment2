@@ -19,7 +19,7 @@ namespace BlackboardReplacement.Models
         public int AUId { get; set; }
         public AU AU { get; set; }
        
-
+        public List<Assignments> Assignmentses { get; set; }
         public List<CoursesTeachers> CoursesTeacherses { get; set; }
     }
 }

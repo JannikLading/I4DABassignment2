@@ -22,7 +22,7 @@ namespace BlackboardReplacement.Models
         [Required]
         public DateTime GraduationDate { get; set; }
 
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int AUId { get; set; }
         public AU AU { get; set; }
 

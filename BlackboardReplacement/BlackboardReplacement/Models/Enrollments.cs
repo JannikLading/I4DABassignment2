@@ -11,11 +11,13 @@ namespace BlackboardReplacement.Models
         public int EnrollmentId { get; set; }
         public bool Status { get; set; }
         public int Grade { get; set; }
-        public Courses Course { get; set; }
-        public int CourseId { get; set; }
 
+        public int CourseId { get; set; }
+        public Courses Course { get; set; }
+
+        public int AUId { get; set; }
         public Student Student { get; set; }
-        public int AUID { get; set; }
+        
 
     }
 }

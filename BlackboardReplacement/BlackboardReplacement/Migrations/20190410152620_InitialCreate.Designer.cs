@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackboardReplacement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190409152300_InitialCreate")]
+    [Migration("20190410152620_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,10 +79,18 @@ namespace BlackboardReplacement.Migrations
                     b.HasData(
                         new
                         {
-                            AssignmentId = 1,
+                            AssignmentId = -1,
                             Attempt = 1,
                             CoursesId = -1,
                             Grade = 12,
+                            TeachersId = 3
+                        },
+                        new
+                        {
+                            AssignmentId = -2,
+                            Attempt = 2,
+                            CoursesId = -2,
+                            Grade = 2,
                             TeachersId = 3
                         });
                 });
@@ -242,7 +250,7 @@ namespace BlackboardReplacement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AUID");
+                    b.Property<int>("AUId");
 
                     b.Property<int>("CourseId");
 
@@ -252,7 +260,7 @@ namespace BlackboardReplacement.Migrations
 
                     b.HasKey("EnrollmentId");
 
-                    b.HasIndex("AUID");
+                    b.HasIndex("AUId");
 
                     b.HasIndex("CourseId");
 
@@ -262,7 +270,7 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             EnrollmentId = 1,
-                            AUID = 1,
+                            AUId = 1,
                             CourseId = -1,
                             Grade = 0,
                             Status = true
@@ -270,7 +278,7 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             EnrollmentId = 2,
-                            AUID = 1,
+                            AUId = 1,
                             CourseId = -2,
                             Grade = 12,
                             Status = false
@@ -278,7 +286,7 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             EnrollmentId = 3,
-                            AUID = 2,
+                            AUId = 2,
                             CourseId = -1,
                             Grade = 0,
                             Status = true
@@ -305,16 +313,20 @@ namespace BlackboardReplacement.Migrations
                         new
                         {
                             GroupId = 22,
-                            AssignmentId = 1,
+                            AssignmentId = -1,
+                            maxSize = 4
+                        },
+                        new
+                        {
+                            GroupId = 42,
+                            AssignmentId = -2,
                             maxSize = 4
                         });
                 });
 
             modelBuilder.Entity("BlackboardReplacement.Models.Student", b =>
                 {
-                    b.Property<int>("AUId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("AUId");
 
                     b.Property<int?>("AUId1");
 
@@ -376,6 +388,24 @@ namespace BlackboardReplacement.Migrations
                             StudentGroupsId = 1,
                             AUId = 1,
                             GroupsId = 22
+                        },
+                        new
+                        {
+                            StudentGroupsId = 2,
+                            AUId = 2,
+                            GroupsId = 22
+                        },
+                        new
+                        {
+                            StudentGroupsId = 3,
+                            AUId = 1,
+                            GroupsId = 42
+                        },
+                        new
+                        {
+                            StudentGroupsId = 4,
+                            AUId = 2,
+                            GroupsId = 42
                         });
                 });
 
@@ -459,7 +489,7 @@ namespace BlackboardReplacement.Migrations
                 {
                     b.HasOne("BlackboardReplacement.Models.Student", "Student")
                         .WithMany("Enrollments")
-                        .HasForeignKey("AUID")
+                        .HasForeignKey("AUId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BlackboardReplacement.Models.Courses", "Course")

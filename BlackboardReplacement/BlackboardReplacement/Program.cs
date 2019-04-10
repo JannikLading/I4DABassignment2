@@ -64,7 +64,7 @@ namespace BlackboardReplacement
                         Console.WriteLine("Unknown input");
                         break;
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             } while (true);
 
         }

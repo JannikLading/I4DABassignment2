@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using BlackboardReplacement.Models;
 
 namespace BlackboardReplacement.Data
@@ -90,6 +91,8 @@ namespace BlackboardReplacement.Data
                     EnrolledDate = new DateTime(2017, 1, 9),
                     GraduationDate = new DateTime(2021, 1, 2),
                     Birthday = new DateTime(1996, 11, 8),
+                    Enrollments = new List<Enrollments>(),
+                    StudentGroups = new List<StudentGroups>()
 
                 });
 
@@ -101,32 +104,29 @@ namespace BlackboardReplacement.Data
                     EnrolledDate = new DateTime(2017, 1, 9),
                     GraduationDate = new DateTime(2021, 1, 2),
                     Birthday = new DateTime(1969, 9, 6),
+                    Enrollments = new List<Enrollments>(),
+                    StudentGroups = new List<StudentGroups>()
                 });
 
             modelBuilder.Entity<Courses>()
                 .HasData(new Courses
                 {
                     CoursesId = -1,
-                    Name = "Databaser",
-                    //CalendarId = 1,
-                    //CourseContentId = 1
-                    
+                    Name = "Databaser"                 
                 });
 
             modelBuilder.Entity<Courses>()
                 .HasData(new Courses
                 {
                     CoursesId = -2,
-                    Name = "Linear Algebra",
-                    //CalendarId = 2,
-                    //CourseContentId = 2
+                    Name = "Linear Algebra"
                 });
 
             modelBuilder.Entity<Enrollments>()
                 .HasData(new Enrollments
                 {
                     EnrollmentId = 1,
-                    AUID = 1,
+                    AUId = 1,
                     CourseId = -1,
                     Status = true
                 });
@@ -135,7 +135,7 @@ namespace BlackboardReplacement.Data
                 .HasData(new Enrollments
                 {
                     EnrollmentId = 2,
-                    AUID = 1,
+                    AUId = 1,
                     CourseId = -2,
                     Status = false,
                     Grade = 12
@@ -145,7 +145,7 @@ namespace BlackboardReplacement.Data
                 .HasData(new Enrollments
                 {
                     EnrollmentId = 3,
-                    AUID = 2,
+                    AUId = 2,
                     CourseId = -1,
                     Status = true
                 });
@@ -155,7 +155,7 @@ namespace BlackboardReplacement.Data
                 {
                     name = "johnnyBoi",
                     AUId = 3,
-                    Birthday = new DateTime(1970,1,1),
+                    Birthday = new DateTime(1970,1,1)
                 });
 
             modelBuilder.Entity<Teachers>()
@@ -163,7 +163,7 @@ namespace BlackboardReplacement.Data
                 {
                     name = "lil' jan-z",
                     AUId = 4,
-                    Birthday = new DateTime(1970, 1, 1),
+                    Birthday = new DateTime(1970, 1, 1)
                 });
 
             modelBuilder.Entity<CoursesTeachers>()
@@ -196,7 +196,7 @@ namespace BlackboardReplacement.Data
                     CalendarId = 1,
                     CoursesId = -1,
                     Lecture = "EF Core FrameWork",
-                    Date = new DateTime(2019, 4,11),
+                    Date = new DateTime(2019, 4,11)
                 });
 
             modelBuilder.Entity<Calendar>()
@@ -205,26 +205,9 @@ namespace BlackboardReplacement.Data
                     CalendarId = 2,
                     CoursesId = -2,
                     Lecture = "Database assignment 2",
-                    Deadline = new DateTime(2019, 4, 14),
+                    Deadline = new DateTime(2019, 4, 14)
                 });
 
-            modelBuilder.Entity<Assignments>()
-                .HasData(new Assignments
-                {
-                    AssignmentId = 1,
-                    CoursesId = -1,
-                    TeachersId = 3,
-                    Grade = 12,
-                    Attempt = 1,
-                });
-
-            modelBuilder.Entity<Groups>()
-                .HasData(new Groups
-                {
-                    GroupId = 22,
-                    maxSize = 4,
-                    AssignmentId = 1
-                });
 
             modelBuilder.Entity<CourseContent>()
                 .HasData(new CourseContent
@@ -257,12 +240,90 @@ namespace BlackboardReplacement.Data
 
                 });
 
-            // Relational shit
+            modelBuilder.Entity<StudentGroups>()
+                .HasData(new StudentGroups
+                {
+                    StudentGroupsId = 2,
+                    GroupsId = 22,
+                    AUId = 2
+
+                });
+
+            modelBuilder.Entity<Groups>()
+                .HasData(new Groups
+                {
+                    GroupId = 22,
+                    maxSize = 4,
+                    AssignmentId = -1
+                });
+
+            modelBuilder.Entity<Assignments>()
+                .HasData(new Assignments
+                {
+                    AssignmentId = -1,
+                    CoursesId = -1,
+                    TeachersId = 3,
+                    Grade = 12,
+                    Attempt = 1
+                });
+
+
+            modelBuilder.Entity<StudentGroups>()
+                .HasData(new StudentGroups
+                {
+                    StudentGroupsId = 3,
+                    GroupsId = 42,
+                    AUId = 1
+
+                });
+
+            modelBuilder.Entity<StudentGroups>()
+                .HasData(new StudentGroups
+                {
+                    StudentGroupsId = 4,
+                    GroupsId = 42,
+                    AUId = 2
+
+                });
+
+            modelBuilder.Entity<Groups>()
+                .HasData(new Groups
+                {
+                    GroupId = 42,
+                    maxSize = 4,
+                    AssignmentId = -2
+                });
+
+            modelBuilder.Entity<Assignments>()
+                .HasData(new Assignments
+                {
+                    AssignmentId = -2,
+                    CoursesId = -2,
+                    TeachersId = 3,
+                    Grade = 02,
+                    Attempt = 2
+                });
+
+            // Relational stuff
 
             modelBuilder.Entity<Enrollments>()
                 .HasOne(e => e.Student)
                 .WithMany(s => s.Enrollments)
-                .HasForeignKey(e => e.AUID);
+                .HasForeignKey(e => e.AUId);
+
+            modelBuilder.Entity<Enrollments>()
+                .HasOne(e => e.Course)
+                .WithMany(c => c.Enrollments)
+                .HasForeignKey(e => e.CourseId);
+            /*
+            using (var db = new AppDbContext())
+            {
+                var enrollment = db.Enrollments.Single(e => e.AUId.Equals(2));
+                var student = db.Students.Single(s => s.AUId.Equals(2));
+
+                student.Enrollments.Add(enrollment);
+
+            }*/
         }
     }
 }
